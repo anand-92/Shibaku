@@ -3,39 +3,43 @@ import {Image, StyleSheet, Text, Touchable, TouchableOpacity, View, Alert, Modal
 
 const AsyncAwait = () => {
     const [modalVisible, setModalVisible] = useState(false);
-
     const [players, setPlayers] = useState<any[]>([])
-    let dataa;
+
     let kobePic = "https://hips.hearstapps.com/hmg-prod/images/gettyimages-490703338.jpg?resize=200:*"
     let lebronPic = "https://bolavip.com/__export/1675354537061/sites/bolavip/img/2023/02/02/lebron_james.jpg_1890075089.jpg"
     let mikePic = "https://bolavip.com/__export/1635190879012/sites/bolavip/img/2021/10/25/michael_jordan.jpg_1890075089.jpg"
     let kdPic = "https://www.japantimes.co.jp/wp-content/uploads/2023/02/np_file_209733-1-200x200.jpeg"
-    const fetchData = async () => {
+    // const fetchData = async () => {
+    //     const response = await fetch("http://localhost:9090")
+    //     const data = await response.json()
+    //     setPlayers(data)
+    // }
+    async function fetchData() {
         const response = await fetch("http://localhost:9090")
-        const data = await response.json()
-        setPlayers(data)
-        dataa=data
+        response.json().then(response => setPlayers(response))
     }
-
     const printKobe = () => {
         let nba = Object.entries(players);
         let name = nba[0][1].name
         alert(name);
     }
-
     const printLebron = () => {
         let nba = Object.entries(players);
         let name = nba[1][1].name
         alert(name);
     }
-
     const printMike = () => {
         let nba = Object.entries(players);
         let name = nba[2][1].name
         alert(name);
     }
-
-    useEffect(() => {
+    const printKd = () => {
+        let nba = Object.entries(players);
+        //let name = nba[3][1].name
+        //return name
+        return 'hi'
+    }
+    useEffect( () => {
         fetchData()
     }, [])
 
@@ -70,7 +74,9 @@ const AsyncAwait = () => {
                 }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Kevin Durant</Text>
+                        <Text style={styles.modalText}>{
+                            printKd()
+                        }</Text>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setModalVisible(!modalVisible)}>
