@@ -9,9 +9,12 @@ export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
+  let obj;
+  let txt;
   if (!isLoadingComplete) {
     return null;
   } else {
+
     return (
       <SafeAreaProvider>
         <Navigation colorScheme={colorScheme} />
