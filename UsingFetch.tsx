@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import {Image, StyleSheet, Text, Touchable, TouchableOpacity, View, Alert, Modal, Pressable} from "react-native";
+import PopUp from "./components/PopUp";
+
 
 const AsyncAwait = () => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -9,35 +11,44 @@ const AsyncAwait = () => {
     let lebronPic = "https://bolavip.com/__export/1675354537061/sites/bolavip/img/2023/02/02/lebron_james.jpg_1890075089.jpg"
     let mikePic = "https://bolavip.com/__export/1635190879012/sites/bolavip/img/2021/10/25/michael_jordan.jpg_1890075089.jpg"
     let kdPic = "https://www.japantimes.co.jp/wp-content/uploads/2023/02/np_file_209733-1-200x200.jpeg"
-    // const fetchData = async () => {
-    //     const response = await fetch("http://localhost:9090")
-    //     const data = await response.json()
-    //     setPlayers(data)
-    // }
+
     async function fetchData() {
         const response = await fetch("http://localhost:9090")
         response.json().then(response => setPlayers(response))
     }
     const printKobe = () => {
         let nba = Object.entries(players);
-        let name = nba[0][1].name
-        alert(name);
+        printPlayer(nba,'kobe');
     }
     const printLebron = () => {
         let nba = Object.entries(players);
-        let name = nba[1][1].name
-        alert(name);
+        printPlayer(nba,'lebron');
     }
     const printMike = () => {
         let nba = Object.entries(players);
-        let name = nba[2][1].name
-        alert(name);
+        printPlayer(nba,'mike');
     }
-    const printKd = () => {
-        let nba = Object.entries(players);
-        //let name = nba[3][1].name
-        //return name
-        return 'hi'
+
+    //Modal Test
+    function printKd() {
+        let playerList = Object.entries(players);
+        for(let i=0; i<playerList.length; i++)
+        {
+            if(playerList[i][0].toString()=='kd') {
+                let player = playerList[i][1];
+                return (`Name: ${player.name}\nPoints: ${player.points}\nChampionships: ${player.rings}`)
+            }
+        }
+    }
+    function printPlayer(playerList: any, playerName: string) {
+        for(let i=0; i<playerList.length; i++)
+        {
+            if(playerList[i][0].toString()==playerName) {
+                let player = playerList[i][1];
+                alert(`Name: ${player.name}\nPoints: ${player.points}\nChampionships: ${player.rings}`)
+                break
+            }
+        }
     }
     useEffect( () => {
         fetchData()
@@ -63,28 +74,8 @@ const AsyncAwait = () => {
             <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
             <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
             <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            {/*<PopUp/>*/}
 
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    setModalVisible(!modalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>{
-                            printKd()
-                        }</Text>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}>
-                            <Text style={styles.textStyle}>Hide Modal</Text>
-                        </Pressable>
-                    </View>
-                </View>
-            </Modal>
 
         {/*//*/}
         {/*//*/}
@@ -132,8 +123,6 @@ const styles = StyleSheet.create({
         gap: 0,
 
     },
-
-
     centeredView: {
         flex: 1,
         justifyContent: 'center',
