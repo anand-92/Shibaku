@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import {Image, StyleSheet, Text, Touchable, TouchableOpacity, View, Alert, Modal, Pressable} from "react-native";
-import PopUp from "./components/PopUp";
 
 
 const AsyncAwait = () => {
@@ -74,37 +73,26 @@ const AsyncAwait = () => {
             <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
             <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
             <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            {/*<PopUp/>*/}
-
-
-        {/*//*/}
-        {/*//*/}
-        {/*//*/}
-        {/*//     /!*<button style={styles.button} onClick={printKobe}><Text style={styles.buttonText}>Kobe Bryant</Text></button>*!/*/}
-        {/*//     /!*<button style={styles.button} onClick={printLebron}><Text style={styles.buttonText}>LeBron James</Text></button>*!/*/}
-        {/*//     /!*<button style={styles.button} onClick={printMike}><Text style={styles.buttonText}>Michael Jordan</Text></button>*!/*/}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    Alert.alert('Modal has been closed.');
+                    setModalVisible(!modalVisible);
+                }}>
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>{printKd()}</Text>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {setModalVisible(!modalVisible)}}>
+                            <Text style={styles.textStyle}>Hide Modal</Text>
+                        </Pressable>
+                    </View>
+                </View>
+            </Modal>
         </View>
-
-
-            // <Modal
-            //     animationType="slide"
-            //     transparent={true}
-            //     visible={modalVisible}
-            //     onRequestClose={() => {
-            //         Alert.alert('Modal has been closed.');
-            //         setModalVisible(!modalVisible);
-            //     }}>
-            //     <View style={styles.centeredView}>
-            //         <View style={styles.modalView}>
-            //             <Text style={styles.modalText}>Hello World!</Text>
-            //             <Pressable
-            //                 style={[styles.button, styles.buttonClose]}
-            //                 onPress={() => setModalVisible(!modalVisible)}>
-            //                 <Text style={styles.textStyle}>Hide Modal</Text>
-            //             </Pressable>
-            //         </View>
-            //     </View>
-            // </Modal>
 
     )
 }
