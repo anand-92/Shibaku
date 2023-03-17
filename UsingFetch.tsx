@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import {Image, StyleSheet, Text, Touchable, TouchableOpacity, View, Alert, Modal, Pressable} from "react-native";
-import PopUp from "./components/PopUp";
 
 
 const AsyncAwait = () => {
