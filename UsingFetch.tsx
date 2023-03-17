@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import {Image, StyleSheet, Text, Touchable, TouchableOpacity, View, Alert, Modal, Pressable} from "react-native";
+import PopUp from "./components/PopUp";
 
 
 const AsyncAwait = () => {
@@ -80,7 +81,7 @@ const AsyncAwait = () => {
 }
 const styles = StyleSheet.create({
     click : {
-      alignSelf: "flex-start",
+        alignSelf: "flex-start",
     },
     pics: {
         minHeight: 200,
@@ -137,3 +138,4 @@ const styles = StyleSheet.create({
 });
 
 export default AsyncAwait
+

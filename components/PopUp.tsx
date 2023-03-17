@@ -12,10 +12,10 @@ class PopupProps {
 }
 
 const PopUp: React.FC<PopupProps> = ({
-     playerStats,
-    modalVisible,
-    setModalVisible,
- }) => {
+                                         playerStats,
+                                         modalVisible,
+                                         setModalVisible,
+                                     }) => {
     return (
         <Modal
             animationType="slide"
@@ -85,3 +85,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 });
+
