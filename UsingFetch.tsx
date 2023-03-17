@@ -3,7 +3,10 @@ import {Image, StyleSheet, Text, Touchable, TouchableOpacity, View, Alert, Modal
 
 
 const AsyncAwait = () => {
-    const [modalVisible, setModalVisible] = useState(false);
+    const [kobeVisible, setKobeVisible] = useState(false);
+    const [lebronVisible, setLebronVisible] = useState(false);
+    const [mikeVisible, setMikeVisible] = useState(false);
+    const [kdVisible, setKdVisible] = useState(false);
     const [players, setPlayers] = useState<any[]>([])
 
     let kobePic = "https://hips.hearstapps.com/hmg-prod/images/gettyimages-490703338.jpg?resize=200:*"
@@ -15,37 +18,31 @@ const AsyncAwait = () => {
         const response = await fetch("http://localhost:9090")
         response.json().then(response => setPlayers(response))
     }
-    const printKobe = () => {
+    function printKobe() {
         let nba = Object.entries(players);
-        printPlayer(nba,'kobe');
+        return printPlayer(nba,'kobe');
     }
-    const printLebron = () => {
+    function printLebron() {
         let nba = Object.entries(players);
-        printPlayer(nba,'lebron');
+        return printPlayer(nba,'lebron');
     }
-    const printMike = () => {
+    function printMike() {
         let nba = Object.entries(players);
-        printPlayer(nba,'mike');
+        return printPlayer(nba,'mike');
     }
 
     //Modal Test
     function printKd() {
         let playerList = Object.entries(players);
-        for(let i=0; i<playerList.length; i++)
-        {
-            if(playerList[i][0].toString()=='kd') {
-                let player = playerList[i][1];
-                return (`Name: ${player.name}\nPoints: ${player.points}\nChampionships: ${player.rings}`)
-            }
-        }
+        let nba = Object.entries(players);
+        return printPlayer(nba,'kd');
     }
     function printPlayer(playerList: any, playerName: string) {
         for(let i=0; i<playerList.length; i++)
         {
             if(playerList[i][0].toString()==playerName) {
                 let player = playerList[i][1];
-                alert(`Name: ${player.name}\nPoints: ${player.points}\nChampionships: ${player.rings}`)
-                break
+                return (`Name: ${player.name}\nPoints: ${player.points}\nChampionships: ${player.rings}`)
             }
         }
     }
@@ -55,45 +52,30 @@ const AsyncAwait = () => {
 
     return (
         <View style={styles.view}>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printLebron}><Image style={styles.pics} source={{uri:lebronPic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printMike}><Image style={styles.pics} source={{uri:mikePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={() => setModalVisible(true)}><Image style={styles.pics} source={{uri:kdPic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={printKobe}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    setModalVisible(!modalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>{printKd()}</Text>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => {setModalVisible(!modalVisible)}}>
-                            <Text style={styles.textStyle}>Hide Modal</Text>
-                        </Pressable>
-                    </View>
-                </View>
-            </Modal>
-        </View>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setLebronVisible(true)}><Image style={styles.pics} source={{uri:lebronPic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setMikeVisible(true)}><Image style={styles.pics} source={{uri:mikePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKdVisible(true)}><Image style={styles.pics} source={{uri:kdPic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
+            <TouchableOpacity style={styles.click} onPress={() => setKobeVisible(true)}><Image style={styles.pics} source={{uri:kobePic}}></Image></TouchableOpacity>
 
+            <PopUp playerStats={printKobe()} modalVisible={kobeVisible} setModalVisible={setKobeVisible}/>
+            <PopUp playerStats={printLebron()} modalVisible={lebronVisible} setModalVisible={setLebronVisible}/>
+            <PopUp playerStats={printMike()} modalVisible={mikeVisible} setModalVisible={setMikeVisible}/>
+            <PopUp playerStats={printKd()} modalVisible={kdVisible} setModalVisible={setKdVisible}/>
+        </View>
     )
 }
 const styles = StyleSheet.create({

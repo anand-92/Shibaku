@@ -2,35 +2,45 @@ import React, {useState, Requireable} from "react";
 import {Alert, Modal, Pressable, StyleSheet, Text, View} from "react-native";
 import PropTypes from 'prop-types';
 
-const [modalVisible, setModalVisible] = useState(false);
+//const [modalVisible, setModalVisible] = useState(false);
 
- function PopUp () {
-
-        return (
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    setModalVisible(!modalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>TEST</Text>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => {setModalVisible(!modalVisible)}}>
-                            <Text style={styles.textStyle}>Hide Modal</Text>
-                        </Pressable>
-                    </View>
-                </View>
-            </Modal>
-        );
+class PopupProps {
+    playerStats: any;
+    modalVisible: any;
+    setModalVisible: any;
 
 }
 
+const PopUp: React.FC<PopupProps> = ({
+     playerStats,
+    modalVisible,
+    setModalVisible,
+ }) => {
+    return (
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setModalVisible(!modalVisible);
+            }}>
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Text style={styles.modalText}>{playerStats}</Text>
+                    <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => {
+                            setModalVisible(!modalVisible)
+                        }}>
+                        <Text style={styles.textStyle}>Hide Modal</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </Modal>
+    );
 
+}
 
 
 export default PopUp;
