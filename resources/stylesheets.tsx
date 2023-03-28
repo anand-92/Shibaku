@@ -1,6 +1,6 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create( {
+export const styles = StyleSheet.create({
     click: {
         alignSelf: "flex-start",
     },
@@ -57,8 +57,8 @@ export const styles = StyleSheet.create( {
     },
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
     title: {
         fontSize: 20,
@@ -86,14 +86,14 @@ export const styles = StyleSheet.create( {
         alignSelf: "center",
         justifyContent: "center",
         textAlign: "center",
-        fontWeight: 'bold',
+        fontWeight: "bold",
         color: "red",
     },
     homeImage: {
-        position: 'absolute',
-        justifyContent: 'center',
+        position: "absolute",
+        justifyContent: "center",
         flex: 1,
-        height: '100%',
-        width: '100%',
+        height: "100%",
+        width: "100%",
     },
 });

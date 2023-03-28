@@ -1,12 +1,17 @@
-import React, {useEffect, useState} from "react";
-import {
-    Image,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { Image, TouchableOpacity, View } from "react-native";
 import PopUp from "./components/PopUp";
-import {kobePic, lebronPic, mikePic, kdPic, hardenPic, piercePic, shaqPic, russPic} from './resources/pictures'
-import {styles} from "./resources/stylesheets";
+import {
+    kobePic,
+    lebronPic,
+    mikePic,
+    kdPic,
+    hardenPic,
+    piercePic,
+    shaqPic,
+    russPic,
+} from "./resources/pictures";
+import { styles } from "./resources/stylesheets";
 
 const PlayerInfoScreen = () => {
     const [kobeVisible, setKobeVisible] = useState(false);
@@ -24,13 +29,19 @@ const PlayerInfoScreen = () => {
 
     async function fetchData() {
         const response = await fetch("http://localhost:8081/listPlayers");
-        response.json().then(response => setPlayers(response));
+        response.json().then((response) => setPlayers(response));
 
-        const lebronStatsResponse = await fetch("http://localhost:8081/player/lebron/seasonStats");
-        lebronStatsResponse.json().then(lebronStatsResponse => setLebronSeasonStats(lebronStatsResponse));
+        const lebronStatsResponse = await fetch(
+            "http://localhost:8081/player/lebron/seasonStats"
+        );
+        lebronStatsResponse
+            .json()
+            .then((lebronStatsResponse) => setLebronSeasonStats(lebronStatsResponse));
 
-        const lebronResponse = await fetch("http://localhost:8081/player/lebron/position");
-        lebronResponse.json().then(lebronResponse => setLebron(lebronResponse)); //+lebronSeasonStats));
+        const lebronResponse = await fetch(
+            "http://localhost:8081/player/lebron/position"
+        );
+        lebronResponse.json().then((lebronResponse) => setLebron(lebronResponse)); //+lebronSeasonStats));
     }
 
     function printKobe() {
@@ -41,7 +52,9 @@ const PlayerInfoScreen = () => {
     function printLebron() {
         let nba = Object.entries(players);
         console.log(lebron);
-        return `${printPlayer(nba, "lebron")}\nPosition: ${lebron}\nPPG: ${lebronSeasonStats.pts}`;
+        return `${printPlayer(nba, "lebron")}\nPosition: ${lebron}\nPPG: ${
+            lebronSeasonStats.pts
+        }`;
     }
 
     function printMike() {
@@ -93,48 +106,46 @@ const PlayerInfoScreen = () => {
                 style={styles.click}
                 onPress={() => setKobeVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: kobePic}}></Image>
+                <Image style={styles.pics} source={{ uri: kobePic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setLebronVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: lebronPic}}></Image>
+                <Image style={styles.pics} source={{ uri: lebronPic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setMikeVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: mikePic}}></Image>
+                <Image style={styles.pics} source={{ uri: mikePic }}></Image>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.click}
-                onPress={() => setKdVisible(true)}>
-                <Image style={styles.pics} source={{uri: kdPic}}></Image>
+            <TouchableOpacity style={styles.click} onPress={() => setKdVisible(true)}>
+                <Image style={styles.pics} source={{ uri: kdPic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setHardenVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: hardenPic}}></Image>
+                <Image style={styles.pics} source={{ uri: hardenPic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setPierceVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: piercePic}}></Image>
+                <Image style={styles.pics} source={{ uri: piercePic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setShaqVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: shaqPic}}></Image>
+                <Image style={styles.pics} source={{ uri: shaqPic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setRussVisible(true)}
             >
-                <Image style={styles.pics} source={{uri: russPic}}></Image>
+                <Image style={styles.pics} source={{ uri: russPic }}></Image>
             </TouchableOpacity>
 
             <PopUp
