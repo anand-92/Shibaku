@@ -3,9 +3,7 @@ import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import { styles } from "../resources/stylesheets";
 
-export default function TabOneScreen({
-                                         navigation,
-                                     }: RootTabScreenProps<"TabOne">) {
+export default function TabOneScreen({navigation,}: RootTabScreenProps<"TabOne">) {
     return (
         <View style={styles.container}>
             <ImageBackground

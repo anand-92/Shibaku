@@ -97,7 +97,7 @@ const PlayerInfoScreen = () => {
     }
 
     useEffect(() => {
-        fetchData();
+        fetchData().then();
     }, []);
 
     return (
