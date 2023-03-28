@@ -1,6 +1,6 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create( {
+export const styles = StyleSheet.create({
     click: {
         alignSelf: "flex-start",
     },
@@ -54,5 +54,46 @@ export const styles = StyleSheet.create( {
     modalText: {
         marginBottom: 15,
         textAlign: "center",
+    },
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "bold",
+        alignSelf: "center",
+        justifyContent: "center",
+        textAlign: "center",
+    },
+    separator: {
+        marginVertical: 30,
+        height: 1,
+        width: "80%",
+    },
+    startButton: {
+        marginTop: 20,
+        padding: 0,
+        backgroundColor: "white",
+        width: 100,
+        height: 50,
+        borderRadius: 10,
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    buttonText: {
+        alignSelf: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "red",
+    },
+    homeImage: {
+        position: "absolute",
+        justifyContent: "center",
+        flex: 1,
+        height: "100%",
+        width: "100%",
     },
 });
