@@ -17,10 +17,9 @@ const AsyncAwait = () => {
     const [shaqVisible, setShaqVisible] = useState(false);
     const [russVisible, setRussVisible] = useState(false);
 
-    let ballDontLieApi: any;
-
     const [players, setPlayers] = useState<any>([]);
     const [lebron, setLebron] = useState<any>([]);
+    const [lebronSeasonStats, setLebronSeasonStats] = useState<any>([]);
 
     let kobePic =
         "https://hips.hearstapps.com/hmg-prod/images/gettyimages-490703338.jpg?resize=200:*";
@@ -40,8 +39,16 @@ const AsyncAwait = () => {
         "https://bolavip.com/__export/1666651031547/sites/bolavip/img/2022/10/24/russellwestbrooklakerstrade.jpg_1890075089.jpg";
 
     async function fetchData() {
-        const response = await fetch("http://localhost:9090");
+        //Web API Load
+        const response = await fetch("http://localhost:8081/listPlayers");
+
+        //android API Load
+        //const response = await fetch("http://10.0.2.2:9090");
+
         response.json().then(response => setPlayers(response));
+
+        const lebronStatsResponse = await fetch("http://localhost:8081/player/lebron/seasonStats");
+        lebronStatsResponse.json().then(lebronStatsResponse => setLebronSeasonStats(lebronStatsResponse));
 
         //External API START
         const requestOptions = {
@@ -61,7 +68,7 @@ const AsyncAwait = () => {
         let nba = Object.entries(players);
         if(JSON.stringify(lebron.data)!==undefined) {
             console.log(JSON.stringify(lebron.data[0].position));
-            return `${printPlayer(nba, "lebron")}\nPosition: ${lebron.data[0].position}`;
+            return `${printPlayer(nba, "lebron")}\nPosition: ${lebron.data[0].position}\n2023 PPG: ${lebronSeasonStats.pts}`;
         }
 
     }
