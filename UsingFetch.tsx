@@ -8,7 +8,7 @@ import PopUp from "./components/PopUp";
 import {kobePic, lebronPic, mikePic, kdPic, hardenPic, piercePic, shaqPic, russPic} from './resources/pictures'
 import {styles} from "./resources/stylesheets";
 
-const AsyncAwait = () => {
+const PlayerInfoScreen = () => {
     const [kobeVisible, setKobeVisible] = useState(false);
     const [lebronVisible, setLebronVisible] = useState(false);
     const [mikeVisible, setMikeVisible] = useState(false);
@@ -181,4 +181,4 @@ const AsyncAwait = () => {
     );
 };
 
-export default AsyncAwait;
+export default PlayerInfoScreen;
