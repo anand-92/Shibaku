@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {
     Image,
-    StyleSheet,
     TouchableOpacity,
     View,
 } from "react-native";
 import PopUp from "./components/PopUp";
+import {kobePic, lebronPic, mikePic, kdPic, hardenPic, piercePic, shaqPic, russPic} from './resources/pictures'
+import {styles} from "./resources/stylesheets";
 
 const AsyncAwait = () => {
     const [kobeVisible, setKobeVisible] = useState(false);
@@ -17,39 +18,19 @@ const AsyncAwait = () => {
     const [shaqVisible, setShaqVisible] = useState(false);
     const [russVisible, setRussVisible] = useState(false);
 
-    let ballDontLieApi: any;
-
     const [players, setPlayers] = useState<any>([]);
     const [lebron, setLebron] = useState<any>([]);
-
-    let kobePic =
-        "https://hips.hearstapps.com/hmg-prod/images/gettyimages-490703338.jpg?resize=200:*";
-    let lebronPic =
-        "https://bolavip.com/__export/1675354537061/sites/bolavip/img/2023/02/02/lebron_james.jpg_1890075089.jpg";
-    let mikePic =
-        "https://bolavip.com/__export/1635190879012/sites/bolavip/img/2021/10/25/michael_jordan.jpg_1890075089.jpg";
-    let kdPic =
-        "https://www.japantimes.co.jp/wp-content/uploads/2023/02/np_file_209733-1-200x200.jpeg";
-    let hardenPic =
-        "https://www.chronicle.co.zw/wp-content/uploads/sites/3/2019/02/James-Harden-200x200.jpg";
-    let piercePic =
-        "https://static1.personality-database.com/profile_images/f81e255a86f6427086c593c6bb01bfaf.png";
-    let shaqPic =
-        "https://static.classora.com/files/uploads/images/entries/510390/main.jpg";
-    let russPic =
-        "https://bolavip.com/__export/1666651031547/sites/bolavip/img/2022/10/24/russellwestbrooklakerstrade.jpg_1890075089.jpg";
+    const [lebronSeasonStats, setLebronSeasonStats] = useState<any>([]);
 
     async function fetchData() {
-        const response = await fetch("http://localhost:9090");
+        const response = await fetch("http://localhost:8081/listPlayers");
         response.json().then(response => setPlayers(response));
 
-        //External API START
-        const requestOptions = {
-            method: 'GET',
-        };
-        const lebronResponse = await fetch("https://balldontlie.io/api/v1/players?search=lebron", requestOptions);
-        lebronResponse.json().then(lebronResponse => setLebron(lebronResponse));
-        //External API END
+        const lebronStatsResponse = await fetch("http://localhost:8081/player/lebron/seasonStats");
+        lebronStatsResponse.json().then(lebronStatsResponse => setLebronSeasonStats(lebronStatsResponse));
+
+        const lebronResponse = await fetch("http://localhost:8081/player/lebron/position");
+        lebronResponse.json().then(lebronResponse => setLebron(lebronResponse)); //+lebronSeasonStats));
     }
 
     function printKobe() {
@@ -59,11 +40,8 @@ const AsyncAwait = () => {
 
     function printLebron() {
         let nba = Object.entries(players);
-        if(JSON.stringify(lebron.data)!==undefined) {
-            console.log(JSON.stringify(lebron.data[0].position));
-            return `${printPlayer(nba, "lebron")}\nPosition: ${lebron.data[0].position}`;
-        }
-
+        console.log(lebron);
+        return `${printPlayer(nba, "lebron")}\nPosition: ${lebron}\nPPG: ${lebronSeasonStats.pts}`;
     }
 
     function printMike() {
@@ -202,61 +180,5 @@ const AsyncAwait = () => {
         </View>
     );
 };
-const styles = StyleSheet.create({
-    click: {
-        alignSelf: "flex-start",
-    },
-    pics: {
-        minHeight: 200,
-        minWidth: 200,
-    },
-    view: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        gap: 0,
-    },
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22,
-    },
-    modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-    },
-    buttonOpen: {
-        backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center",
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center",
-    },
-});
 
 export default AsyncAwait;
