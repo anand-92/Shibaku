@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-import PopUp from "./components/PopUp";
+import PopUp from "../components/PopUp";
 import {
     kobePic,
     lebronPic,
@@ -10,8 +10,8 @@ import {
     piercePic,
     shaqPic,
     russPic,
-} from "./resources/pictures";
-import { styles } from "./resources/stylesheets";
+} from "../resources/pictures";
+import { styles } from "../resources/stylesheets";
 
 const PlayerInfoScreen = () => {
     const [kobeVisible, setKobeVisible] = useState(false);

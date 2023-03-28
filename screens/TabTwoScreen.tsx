@@ -1,5 +1,5 @@
 import { View } from '../components/Themed';
-import PlayerInfoScreen from "../UsingFetch";
+import PlayerInfoScreen from "./PlayerInfo";
 import {styles} from "../resources/stylesheets";
 
 export default function TabTwoScreen() {
