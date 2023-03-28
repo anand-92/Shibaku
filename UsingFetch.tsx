@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {
     Image,
-    StyleSheet,
     TouchableOpacity,
     View,
 } from "react-native";
 import PopUp from "./components/PopUp";
 import {kobePic, lebronPic, mikePic, kdPic, hardenPic, piercePic, shaqPic, russPic} from './resources/pictures'
+import {styles} from "./resources/stylesheets";
 
 const AsyncAwait = () => {
     const [kobeVisible, setKobeVisible] = useState(false);
@@ -23,24 +23,14 @@ const AsyncAwait = () => {
     const [lebronSeasonStats, setLebronSeasonStats] = useState<any>([]);
 
     async function fetchData() {
-        //Web API Load
         const response = await fetch("http://localhost:8081/listPlayers");
-
-        //android API Load
-        //const response = await fetch("http://10.0.2.2:9090");
-
         response.json().then(response => setPlayers(response));
 
         const lebronStatsResponse = await fetch("http://localhost:8081/player/lebron/seasonStats");
         lebronStatsResponse.json().then(lebronStatsResponse => setLebronSeasonStats(lebronStatsResponse));
 
-        //External API START
-        const requestOptions = {
-            method: 'GET',
-        };
-        const lebronResponse = await fetch("http://localhost:8081/player/lebron/position", requestOptions);
+        const lebronResponse = await fetch("http://localhost:8081/player/lebron/position");
         lebronResponse.json().then(lebronResponse => setLebron(lebronResponse)); //+lebronSeasonStats));
-        //External API END
     }
 
     function printKobe() {
@@ -190,61 +180,5 @@ const AsyncAwait = () => {
         </View>
     );
 };
-const styles = StyleSheet.create({
-    click: {
-        alignSelf: "flex-start",
-    },
-    pics: {
-        minHeight: 200,
-        minWidth: 200,
-    },
-    view: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        gap: 0,
-    },
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22,
-    },
-    modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-    },
-    buttonOpen: {
-        backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center",
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center",
-    },
-});
 
 export default AsyncAwait;
