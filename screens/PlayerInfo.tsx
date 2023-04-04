@@ -24,7 +24,6 @@ const PlayerInfoScreen = () => {
     const [russVisible, setRussVisible] = useState(false);
 
     const [players, setPlayers] = useState<any>([]);
-    const [lebron, setLebron] = useState<any>([]);
     const [lebronSeasonStats, setLebronSeasonStats] = useState<any>([]);
 
     async function fetchData() {
@@ -38,10 +37,6 @@ const PlayerInfoScreen = () => {
             .json()
             .then((lebronStatsResponse) => setLebronSeasonStats(lebronStatsResponse));
 
-        const lebronResponse = await fetch(
-            "http://localhost:8081/player/lebron/position"
-        );
-        lebronResponse.json().then((lebronResponse) => setLebron(lebronResponse)); //+lebronSeasonStats));
     }
 
     function printKobe() {
@@ -51,10 +46,10 @@ const PlayerInfoScreen = () => {
 
     function printLebron() {
         let nba = Object.entries(players);
-        console.log(lebron);
-        return `${printPlayer(nba, "lebron")}\nPosition: ${lebron}\nPPG: ${
-            lebronSeasonStats.pts
-        }`;
+        if(lebronSeasonStats.lebron!=undefined) {
+            console.log(JSON.stringify(lebronSeasonStats.lebron[0].pts));
+            return `${printPlayer(nba, "lebron")}\nPosition: ${lebronSeasonStats.lebron[0].position}\nPPG: ${lebronSeasonStats.lebron[0].pts}`;
+        }
     }
 
     function printMike() {
