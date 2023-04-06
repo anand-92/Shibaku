@@ -2,29 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 import PopUp from "../components/PopUp";
 import {
-    kobePic,
     lebronPic,
-    mikePic,
     kdPic,
     hardenPic,
-    piercePic,
-    shaqPic,
     russPic,
 } from "../resources/pictures";
 import { styles } from "../resources/stylesheets";
 
 const PlayerInfoScreen = () => {
-    const [kobeVisible, setKobeVisible] = useState(false);
     const [lebronVisible, setLebronVisible] = useState(false);
-    const [mikeVisible, setMikeVisible] = useState(false);
     const [kdVisible, setKdVisible] = useState(false);
     const [hardenVisible, setHardenVisible] = useState(false);
-    const [pierceVisible, setPierceVisible] = useState(false);
-    const [shaqVisible, setShaqVisible] = useState(false);
     const [russVisible, setRussVisible] = useState(false);
 
     const [players, setPlayers] = useState<any>([]);
-    const [lebronSeasonStats, setLebronSeasonStats] = useState<any>([]);
+
+    const [kdInfo, setKdInfo] = useState<any>([]);
+    const [lebronInfo, setLebronInfo] = useState<any>([]);
+    const [hardenInfo, setHardenInfo] = useState<any>([]);
+    const [westbrookInfo, setWestbrookInfo] = useState<any>([]);
 
     async function fetchData() {
         const response = await fetch("http://localhost:8081/listPlayers");
@@ -35,51 +31,58 @@ const PlayerInfoScreen = () => {
         );
         lebronStatsResponse
             .json()
-            .then((lebronStatsResponse) => setLebronSeasonStats(lebronStatsResponse));
+            .then((lebronStatsResponse) => setLebronInfo(lebronStatsResponse));
 
-    }
+        const kdStatsResponse = await fetch(
+            "http://localhost:8081/player/durant/seasonStats"
+        );
+        kdStatsResponse
+            .json()
+            .then((kdStatsResponse) => setKdInfo(kdStatsResponse));
 
-    function printKobe() {
-        let nba = Object.entries(players);
-        return printPlayer(nba, "kobe");
+        const hardenStatsResponse = await fetch(
+            "http://localhost:8081/player/harden/seasonStats"
+        );
+        hardenStatsResponse
+            .json()
+            .then((hardenStatsResponse) => setHardenInfo(hardenStatsResponse));
+
+        const westbrookStatsResponse = await fetch(
+            "http://localhost:8081/player/westbrook/seasonStats"
+        );
+        westbrookStatsResponse
+            .json()
+            .then((westbrookStatsResponse) => setWestbrookInfo(westbrookStatsResponse));
+
     }
 
     function printLebron() {
         let nba = Object.entries(players);
-        if(lebronSeasonStats.lebron!=undefined) {
-            console.log(JSON.stringify(lebronSeasonStats.lebron[0].pts));
-            return `${printPlayer(nba, "lebron")}\nPosition: ${lebronSeasonStats.lebron[0].position}\nPPG: ${lebronSeasonStats.lebron[0].pts}`;
+        if(lebronInfo.lebron!=undefined) {
+            console.log(JSON.stringify(lebronInfo.lebron[0].pts));
+            return `${printPlayer(nba, "lebron")}\nPosition: ${lebronInfo.lebron[0].position}\nPPG: ${lebronInfo.lebron[0].pts}`;
         }
     }
-
-    function printMike() {
-        let nba = Object.entries(players);
-        return printPlayer(nba, "mike");
-    }
-
     function printKd() {
         let nba = Object.entries(players);
-        return printPlayer(nba, "kd");
+        if (kdInfo.durant != undefined) {
+            console.log(JSON.stringify(kdInfo.durant[0].pts));
+            return `${printPlayer(nba, "durant")}\nPosition: ${kdInfo.durant[0].position}\nPPG: ${kdInfo.durant[0].pts}`;
+        }
     }
-
     function printHarden() {
         let nba = Object.entries(players);
-        return printPlayer(nba, "harden");
+        if(hardenInfo.harden!=undefined) {
+            console.log(JSON.stringify(hardenInfo.harden[0].pts));
+            return `${printPlayer(nba, "harden")}\nPosition: ${hardenInfo.harden[0].position}\nPPG: ${hardenInfo.harden[0].pts}`;
+        }
     }
-
-    function printPierce() {
-        let nba = Object.entries(players);
-        return printPlayer(nba, "paulpierce");
-    }
-
-    function printShaq() {
-        let nba = Object.entries(players);
-        return printPlayer(nba, "shaq");
-    }
-
     function printRuss() {
         let nba = Object.entries(players);
-        return printPlayer(nba, "russ");
+        if(westbrookInfo.westbrook!=undefined) {
+            console.log(JSON.stringify(westbrookInfo.westbrook[0].pts));
+            return `${printPlayer(nba, "westbrook")}\nPosition: ${westbrookInfo.westbrook[0].position}\nPPG: ${westbrookInfo.westbrook[0].pts}`;
+        }
     }
 
     function printPlayer(playerList: any, playerName: string) {
@@ -99,21 +102,9 @@ const PlayerInfoScreen = () => {
         <View style={styles.view}>
             <TouchableOpacity
                 style={styles.click}
-                onPress={() => setKobeVisible(true)}
-            >
-                <Image style={styles.pics} source={{ uri: kobePic }}></Image>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.click}
                 onPress={() => setLebronVisible(true)}
             >
                 <Image style={styles.pics} source={{ uri: lebronPic }}></Image>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.click}
-                onPress={() => setMikeVisible(true)}
-            >
-                <Image style={styles.pics} source={{ uri: mikePic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity style={styles.click} onPress={() => setKdVisible(true)}>
                 <Image style={styles.pics} source={{ uri: kdPic }}></Image>
@@ -126,37 +117,15 @@ const PlayerInfoScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
-                onPress={() => setPierceVisible(true)}
-            >
-                <Image style={styles.pics} source={{ uri: piercePic }}></Image>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.click}
-                onPress={() => setShaqVisible(true)}
-            >
-                <Image style={styles.pics} source={{ uri: shaqPic }}></Image>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.click}
                 onPress={() => setRussVisible(true)}
             >
                 <Image style={styles.pics} source={{ uri: russPic }}></Image>
             </TouchableOpacity>
 
             <PopUp
-                playerStats={printKobe()}
-                modalVisible={kobeVisible}
-                setModalVisible={setKobeVisible}
-            />
-            <PopUp
                 playerStats={printLebron()}
                 modalVisible={lebronVisible}
                 setModalVisible={setLebronVisible}
-            />
-            <PopUp
-                playerStats={printMike()}
-                modalVisible={mikeVisible}
-                setModalVisible={setMikeVisible}
             />
             <PopUp
                 playerStats={printKd()}
@@ -167,16 +136,6 @@ const PlayerInfoScreen = () => {
                 playerStats={printHarden()}
                 modalVisible={hardenVisible}
                 setModalVisible={setHardenVisible}
-            />
-            <PopUp
-                playerStats={printPierce()}
-                modalVisible={pierceVisible}
-                setModalVisible={setPierceVisible}
-            />
-            <PopUp
-                playerStats={printShaq()}
-                modalVisible={shaqVisible}
-                setModalVisible={setShaqVisible}
             />
             <PopUp
                 playerStats={printRuss()}
