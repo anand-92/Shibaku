@@ -5,27 +5,25 @@ import {
     lebronPic,
     kdPic,
     hardenPic,
-    russPic,
+    westbrookPic,
+    lillardPic,
 } from "../resources/pictures";
 import { styles } from "../resources/stylesheets";
 
 const PlayerInfoScreen = () => {
     const [lebronVisible, setLebronVisible] = useState(false);
-    const [kdVisible, setKdVisible] = useState(false);
+    const [durantVisible, setDurantVisible] = useState(false);
     const [hardenVisible, setHardenVisible] = useState(false);
-    const [russVisible, setRussVisible] = useState(false);
+    const [westbrookVisible, setWestbrookVisible] = useState(false);
+    const [lillardVisible, setLillardVisible] = useState(false);
 
-    const [players, setPlayers] = useState<any>([]);
-
-    const [kdInfo, setKdInfo] = useState<any>([]);
+    const [durantInfo, setDurantInfo] = useState<any>([]);
     const [lebronInfo, setLebronInfo] = useState<any>([]);
     const [hardenInfo, setHardenInfo] = useState<any>([]);
     const [westbrookInfo, setWestbrookInfo] = useState<any>([]);
+    const [lillardInfo, setLillardInfo] = useState<any>([]);
 
     async function fetchData() {
-        const response = await fetch("http://localhost:8081/listPlayers");
-        response.json().then((response) => setPlayers(response));
-
         const lebronStatsResponse = await fetch(
             "http://localhost:8081/player/lebron/seasonStats"
         );
@@ -33,12 +31,12 @@ const PlayerInfoScreen = () => {
             .json()
             .then((lebronStatsResponse) => setLebronInfo(lebronStatsResponse));
 
-        const kdStatsResponse = await fetch(
+        const durantStatsResponse = await fetch(
             "http://localhost:8081/player/durant/seasonStats"
         );
-        kdStatsResponse
+        durantStatsResponse
             .json()
-            .then((kdStatsResponse) => setKdInfo(kdStatsResponse));
+            .then((durantStatsResponse) => setDurantInfo(durantStatsResponse));
 
         const hardenStatsResponse = await fetch(
             "http://localhost:8081/player/harden/seasonStats"
@@ -54,43 +52,52 @@ const PlayerInfoScreen = () => {
             .json()
             .then((westbrookStatsResponse) => setWestbrookInfo(westbrookStatsResponse));
 
+        const lillardStatsResponse = await fetch(
+            "http://localhost:8081/player/lillard/seasonStats"
+        );
+        lillardStatsResponse
+            .json()
+            .then((lillardStatsResponse) => setLillardInfo(lillardStatsResponse));
     }
 
     function printLebron() {
-        let nba = Object.entries(players);
         if(lebronInfo.lebron!=undefined) {
-            console.log(JSON.stringify(lebronInfo.lebron[0].pts));
-            return `${printPlayer(nba, "lebron")}\nPosition: ${lebronInfo.lebron[0].position}\nPPG: ${lebronInfo.lebron[0].pts}`;
+            return  `Name: ${lebronInfo.lebron[0].first_name} ${lebronInfo.lebron[0].last_name}\n`+
+                    `Height: ${lebronInfo.lebron[0].height_feet}\'${lebronInfo.lebron[0].height_inches}\"\n`+
+                    `Position: ${lebronInfo.lebron[0].position}\n`+
+                    `PPG: ${lebronInfo.lebron[0].pts}`;
         }
     }
     function printKd() {
-        let nba = Object.entries(players);
-        if (kdInfo.durant != undefined) {
-            console.log(JSON.stringify(kdInfo.durant[0].pts));
-            return `${printPlayer(nba, "durant")}\nPosition: ${kdInfo.durant[0].position}\nPPG: ${kdInfo.durant[0].pts}`;
+        if(durantInfo.durant!=undefined) {
+            return  `Name: ${durantInfo.durant[0].first_name} ${durantInfo.durant[0].last_name}\n`+
+                `Height: ${durantInfo.durant[0].height_feet}\'${durantInfo.durant[0].height_inches}\"\n`+
+                `Position: ${durantInfo.durant[0].position}\n`+
+                `PPG: ${durantInfo.durant[0].pts}`;
         }
     }
     function printHarden() {
-        let nba = Object.entries(players);
         if(hardenInfo.harden!=undefined) {
-            console.log(JSON.stringify(hardenInfo.harden[0].pts));
-            return `${printPlayer(nba, "harden")}\nPosition: ${hardenInfo.harden[0].position}\nPPG: ${hardenInfo.harden[0].pts}`;
+            return  `Name: ${hardenInfo.harden[0].first_name} ${hardenInfo.harden[0].last_name}\n`+
+                `Height: ${hardenInfo.harden[0].height_feet}\'${hardenInfo.harden[0].height_inches}\"\n`+
+                `Position: ${hardenInfo.harden[0].position}\n`+
+                `PPG: ${hardenInfo.harden[0].pts}`;
         }
     }
-    function printRuss() {
-        let nba = Object.entries(players);
+    function printWestbrook() {
         if(westbrookInfo.westbrook!=undefined) {
-            console.log(JSON.stringify(westbrookInfo.westbrook[0].pts));
-            return `${printPlayer(nba, "westbrook")}\nPosition: ${westbrookInfo.westbrook[0].position}\nPPG: ${westbrookInfo.westbrook[0].pts}`;
+            return  `Name: ${westbrookInfo.westbrook[0].first_name} ${westbrookInfo.westbrook[0].last_name}\n`+
+                `Height: ${westbrookInfo.westbrook[0].height_feet}\'${westbrookInfo.westbrook[0].height_inches}\"\n`+
+                `Position: ${westbrookInfo.westbrook[0].position}\n`+
+                `PPG: ${westbrookInfo.westbrook[0].pts}`;
         }
     }
-
-    function printPlayer(playerList: any, playerName: string) {
-        for (let i = 0; i < playerList.length; i++) {
-            if (playerList[i][0].toString() == playerName) {
-                let player = playerList[i][1];
-                return `Name: ${player.name}\nPoints: ${player.points}\nChampionships: ${player.rings}`;
-            }
+    function printLillard() {
+        if(lillardInfo.lillard!=undefined) {
+            return  `Name: ${lillardInfo.lillard[0].first_name} ${lillardInfo.lillard[0].last_name}\n`+
+                `Height: ${lillardInfo.lillard[0].height_feet}\'${lillardInfo.lillard[0].height_inches}\"\n`+
+                `Position: ${lillardInfo.lillard[0].position}\n`+
+                `PPG: ${lillardInfo.lillard[0].pts}`;
         }
     }
 
@@ -106,7 +113,7 @@ const PlayerInfoScreen = () => {
             >
                 <Image style={styles.pics} source={{ uri: lebronPic }}></Image>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.click} onPress={() => setKdVisible(true)}>
+            <TouchableOpacity style={styles.click} onPress={() => setDurantVisible(true)}>
                 <Image style={styles.pics} source={{ uri: kdPic }}></Image>
             </TouchableOpacity>
             <TouchableOpacity
@@ -117,9 +124,15 @@ const PlayerInfoScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
-                onPress={() => setRussVisible(true)}
+                onPress={() => setWestbrookVisible(true)}
             >
-                <Image style={styles.pics} source={{ uri: russPic }}></Image>
+                <Image style={styles.pics} source={{ uri: westbrookPic }}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.click}
+                onPress={() => setLillardVisible(true)}
+            >
+                <Image style={styles.pics} source={{ uri: lillardPic }}></Image>
             </TouchableOpacity>
 
             <PopUp
@@ -129,8 +142,8 @@ const PlayerInfoScreen = () => {
             />
             <PopUp
                 playerStats={printKd()}
-                modalVisible={kdVisible}
-                setModalVisible={setKdVisible}
+                modalVisible={durantVisible}
+                setModalVisible={setDurantVisible}
             />
             <PopUp
                 playerStats={printHarden()}
@@ -138,9 +151,14 @@ const PlayerInfoScreen = () => {
                 setModalVisible={setHardenVisible}
             />
             <PopUp
-                playerStats={printRuss()}
-                modalVisible={russVisible}
-                setModalVisible={setRussVisible}
+                playerStats={printWestbrook()}
+                modalVisible={westbrookVisible}
+                setModalVisible={setWestbrookVisible}
+            />
+            <PopUp
+                playerStats={printLillard()}
+                modalVisible={lillardVisible}
+                setModalVisible={setLillardVisible}
             />
         </View>
     );
