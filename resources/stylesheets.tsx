@@ -8,6 +8,13 @@ export const styles = StyleSheet.create({
         minHeight: 200,
         minWidth: 200,
     },
+    input: {
+        backgroundColor: "white",
+        width: 150,
+        height: 20,
+        marginBottom: 50,
+        textAlign: "center"
+    },
     view: {
         display: "flex",
         flexDirection: "row",

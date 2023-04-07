@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, TouchableOpacity, View } from "react-native";
+import {Image, TouchableOpacity, View} from "react-native";
 import PopUp from "../components/PopUp";
 import {
     lebronPic,
@@ -61,43 +61,43 @@ const PlayerInfoScreen = () => {
     }
 
     function printLebron() {
-        if(lebronInfo.lebron!=undefined) {
-            return  `Name: ${lebronInfo.lebron[0].first_name} ${lebronInfo.lebron[0].last_name}\n`+
-                    `Height: ${lebronInfo.lebron[0].height_feet}\'${lebronInfo.lebron[0].height_inches}\"\n`+
-                    `Position: ${lebronInfo.lebron[0].position}\n`+
-                    `PPG: ${lebronInfo.lebron[0].pts}`;
+        if(lebronInfo.data!=undefined) {
+            return  `Name: ${lebronInfo.data[0].first_name} ${lebronInfo.data[0].last_name}\n`+
+                    `Height: ${lebronInfo.data[0].height_feet}\'${lebronInfo.data[0].height_inches}\"\n`+
+                    `Position: ${lebronInfo.data[0].position}\n`+
+                    `PPG: ${lebronInfo.data[0].pts}`;
         }
     }
     function printKd() {
-        if(durantInfo.durant!=undefined) {
-            return  `Name: ${durantInfo.durant[0].first_name} ${durantInfo.durant[0].last_name}\n`+
-                `Height: ${durantInfo.durant[0].height_feet}\'${durantInfo.durant[0].height_inches}\"\n`+
-                `Position: ${durantInfo.durant[0].position}\n`+
-                `PPG: ${durantInfo.durant[0].pts}`;
+        if(durantInfo.data!=undefined) {
+            return  `Name: ${durantInfo.data[0].first_name} ${durantInfo.data[0].last_name}\n`+
+                `Height: ${durantInfo.data[0].height_feet}\'${durantInfo.data[0].height_inches}\"\n`+
+                `Position: ${durantInfo.data[0].position}\n`+
+                `PPG: ${durantInfo.data[0].pts}`;
         }
     }
     function printHarden() {
-        if(hardenInfo.harden!=undefined) {
-            return  `Name: ${hardenInfo.harden[0].first_name} ${hardenInfo.harden[0].last_name}\n`+
-                `Height: ${hardenInfo.harden[0].height_feet}\'${hardenInfo.harden[0].height_inches}\"\n`+
-                `Position: ${hardenInfo.harden[0].position}\n`+
-                `PPG: ${hardenInfo.harden[0].pts}`;
+        if(hardenInfo.data!=undefined) {
+            return  `Name: ${hardenInfo.data[0].first_name} ${hardenInfo.data[0].last_name}\n`+
+                `Height: ${hardenInfo.data[0].height_feet}\'${hardenInfo.data[0].height_inches}\"\n`+
+                `Position: ${hardenInfo.data[0].position}\n`+
+                `PPG: ${hardenInfo.data[0].pts}`;
         }
     }
     function printWestbrook() {
-        if(westbrookInfo.westbrook!=undefined) {
-            return  `Name: ${westbrookInfo.westbrook[0].first_name} ${westbrookInfo.westbrook[0].last_name}\n`+
-                `Height: ${westbrookInfo.westbrook[0].height_feet}\'${westbrookInfo.westbrook[0].height_inches}\"\n`+
-                `Position: ${westbrookInfo.westbrook[0].position}\n`+
-                `PPG: ${westbrookInfo.westbrook[0].pts}`;
+        if(westbrookInfo.data!=undefined) {
+            return  `Name: ${westbrookInfo.data[0].first_name} ${westbrookInfo.data[0].last_name}\n`+
+                `Height: ${westbrookInfo.data[0].height_feet}\'${westbrookInfo.data[0].height_inches}\"\n`+
+                `Position: ${westbrookInfo.data[0].position}\n`+
+                `PPG: ${westbrookInfo.data[0].pts}`;
         }
     }
     function printLillard() {
-        if(lillardInfo.lillard!=undefined) {
-            return  `Name: ${lillardInfo.lillard[0].first_name} ${lillardInfo.lillard[0].last_name}\n`+
-                `Height: ${lillardInfo.lillard[0].height_feet}\'${lillardInfo.lillard[0].height_inches}\"\n`+
-                `Position: ${lillardInfo.lillard[0].position}\n`+
-                `PPG: ${lillardInfo.lillard[0].pts}`;
+        if(lillardInfo.data!=undefined) {
+            return  `Name: ${lillardInfo.data[0].first_name} ${lillardInfo.data[0].last_name}\n`+
+                `Height: ${lillardInfo.data[0].height_feet}\'${lillardInfo.data[0].height_inches}\"\n`+
+                `Position: ${lillardInfo.data[0].position}\n`+
+                `PPG: ${lillardInfo.data[0].pts}`;
         }
     }
 
@@ -106,60 +106,55 @@ const PlayerInfoScreen = () => {
     }, []);
 
     return (
-        <View style={styles.view}>
+            <View style={styles.view}>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setLebronVisible(true)}
             >
-                <Image style={styles.pics} source={{ uri: lebronPic }}></Image>
+                <Image style={styles.pics} source={{uri: lebronPic}}></Image>
             </TouchableOpacity>
             <TouchableOpacity style={styles.click} onPress={() => setDurantVisible(true)}>
-                <Image style={styles.pics} source={{ uri: kdPic }}></Image>
+                <Image style={styles.pics} source={{uri: kdPic}}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setHardenVisible(true)}
             >
-                <Image style={styles.pics} source={{ uri: hardenPic }}></Image>
+                <Image style={styles.pics} source={{uri: hardenPic}}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setWestbrookVisible(true)}
             >
-                <Image style={styles.pics} source={{ uri: westbrookPic }}></Image>
+                <Image style={styles.pics} source={{uri: westbrookPic}}></Image>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.click}
                 onPress={() => setLillardVisible(true)}
             >
-                <Image style={styles.pics} source={{ uri: lillardPic }}></Image>
+                <Image style={styles.pics} source={{uri: lillardPic}}></Image>
             </TouchableOpacity>
 
             <PopUp
                 playerStats={printLebron()}
                 modalVisible={lebronVisible}
-                setModalVisible={setLebronVisible}
-            />
+                setModalVisible={setLebronVisible}/>
             <PopUp
                 playerStats={printKd()}
                 modalVisible={durantVisible}
-                setModalVisible={setDurantVisible}
-            />
+                setModalVisible={setDurantVisible}/>
             <PopUp
                 playerStats={printHarden()}
                 modalVisible={hardenVisible}
-                setModalVisible={setHardenVisible}
-            />
+                setModalVisible={setHardenVisible}/>
             <PopUp
                 playerStats={printWestbrook()}
                 modalVisible={westbrookVisible}
-                setModalVisible={setWestbrookVisible}
-            />
+                setModalVisible={setWestbrookVisible}/>
             <PopUp
                 playerStats={printLillard()}
                 modalVisible={lillardVisible}
-                setModalVisible={setLillardVisible}
-            />
+                setModalVisible={setLillardVisible}/>
         </View>
     );
 };
