@@ -3,7 +3,7 @@ import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import { styles } from "../resources/stylesheets";
 
-export default function TabOneScreen({navigation,}: RootTabScreenProps<"TabOne">) {
+export default function StartScreen({navigation,}: RootTabScreenProps<"StartScreen">) {
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -14,7 +14,7 @@ export default function TabOneScreen({navigation,}: RootTabScreenProps<"TabOne">
                 <Text style={styles.title}>NBA Stats Aggregator</Text>
                 <Pressable
                     style={styles.startButton}
-                    onPress={() => navigation.navigate("TabTwo")}
+                    onPress={() => navigation.navigate("NBAStats")}
                 >
                     <Text style={styles.buttonText}>Start Now</Text>
                 </Pressable>
