@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Image, TouchableOpacity, View} from "react-native";
-import PopUp from "../components/PopUp";
+import PopUp from "./PopUp";
 import {
     lebronPic,
     kdPic,
