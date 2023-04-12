@@ -1,14 +1,16 @@
 import { View } from '../components/Themed';
 import PlayerInfoScreen from "../components/PlayerInfo";
 import {styles} from "../resources/stylesheets";
-import {TextInput} from "react-native";
+import {Image, TextInput} from "react-native";
 import React, {useState} from "react";
-import PopUp from "../components/PopUp";
+import SearchPopUp from "../components/SearchPopUp";
+import {stockPic} from "../resources/pictures";
 
 export default function MainApp() {
     const [searchInfo, setSearchInfo] = useState<any>([]);
     const [searchVisible, setSearchVisible] = useState(false);
     const [statInfo, setStatInfo] = useState<any>("Loading...");
+    const [playerPic, setPlayerPic] = useState<any>(stockPic);
 
     function getInfo(player: string) {
         fetchSearch(player).then( async () => {
@@ -21,6 +23,9 @@ export default function MainApp() {
                         `Height: ${searchInfo.data[0].height_feet}\'${searchInfo.data[0].height_inches}\"\n` +
                         `Position: ${searchInfo.data[0].position}\n` +
                         `PPG: ${searchInfo.data[0].pts}`);
+                    setPlayerPic("https://www.basketball-reference.com/req/202106291/images/players/"
+                        +(searchInfo.data[0].last_name.substring(0,5)+searchInfo.data[0].first_name.substring(0,2)).toLowerCase()+"01.jpg");
+                    console.log(playerPic);
                 }
             }
         })
@@ -43,16 +48,19 @@ export default function MainApp() {
 
   return (
     <View style={styles.container}>
+        <Image></Image>
         <TextInput
             style={styles.input}
             onChangeText={onChangeText}
             placeholder={text}
             onSubmitEditing={() => onSearch(text)}
         />
-        <PopUp
+        <SearchPopUp
             playerStats={statInfo}
             modalVisible={searchVisible}
-            setModalVisible={setSearchVisible}/>
+            setModalVisible={setSearchVisible}
+            playerImg={playerPic}
+        />
       <PlayerInfoScreen/>
     </View>
   );
