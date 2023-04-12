@@ -10,8 +10,6 @@ export default function MainApp() {
     const [searchVisible, setSearchVisible] = useState(false);
     const [statInfo, setStatInfo] = useState<any>("Loading...");
 
-    const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-
     function getInfo(player: string) {
         fetchSearch(player).then( async () => {
             if (searchInfo.data != undefined) {
@@ -28,7 +26,6 @@ export default function MainApp() {
         })
     }
 
-
     async function fetchSearch(name: string) {
         const searchStatsResponse = await fetch(
             "http://localhost:8081/player/"+name+"/seasonStats"
@@ -40,7 +37,6 @@ export default function MainApp() {
 
      async function onSearch(text: string) {
          getInfo(text);
-         await sleep(5000)
          setSearchVisible(true);
      }
     const [text, onChangeText] = React.useState('Search A Player...');
