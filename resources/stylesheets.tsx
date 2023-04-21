@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    instructions: {
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 15,
+        textAlign: "center",
+    },
     click: {
         alignSelf: "flex-start",
     },
