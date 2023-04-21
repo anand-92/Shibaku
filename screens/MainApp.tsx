@@ -31,9 +31,10 @@ export default function MainApp() {
          await fetchSearch(player).then( () => {
              if (searchInfo.data != undefined) {
                  if (searchInfo.data[0].first_name == "No Player Found") {
-                     setStatInfo("No Player Found");
+                     setStatInfo("No/Multiple Players Found");
                      setPlayerPic(stockPic);
-                 } else {
+                 }
+                 else {
                      setStatInfo(`Name: ${searchInfo.data[0].first_name} ${searchInfo.data[0].last_name}\n` +
                          `Height: ${searchInfo.data[0].height_feet}\'${searchInfo.data[0].height_inches}\"\n` +
                          `Position: ${searchInfo.data[0].position}\n` +
