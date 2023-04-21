@@ -35,10 +35,16 @@ export default function MainApp() {
                      setPlayerPic(stockPic);
                  }
                  else {
-                     setStatInfo(`Name: ${searchInfo.data[0].first_name} ${searchInfo.data[0].last_name}\n` +
-                         `Height: ${searchInfo.data[0].height_feet}\'${searchInfo.data[0].height_inches}\"\n` +
+                     setStatInfo(''+
+                         `Name: ${searchInfo.data[0].first_name} ${searchInfo.data[0].last_name}\n` +
+                         `Team: ${searchInfo.data[0].team.full_name}\n` +
+                         `Height: ${searchInfo.data[0].height_feet}\'${searchInfo.data[0].height_inches}\"\n`.replaceAll('null','?') +
+                         `Weight: ${searchInfo.data[0].weight_pounds} lbs\n`.replaceAll('null','?') +
                          `Position: ${searchInfo.data[0].position}\n` +
-                         `PPG: ${searchInfo.data[0].pts}`);
+                         `PPG: ${searchInfo.data[0].pts}\n` +
+                         `RPG: ${searchInfo.data[0].reb}\n` +
+                         `APG: ${searchInfo.data[0].ast}\n`
+                     );
                      setPlayerPic("https://www.basketball-reference.com/req/202106291/images/players/"
                          +(searchInfo.data[0].last_name.substring(0,5)+searchInfo.data[0].first_name.substring(0,2)).toLowerCase()+"01.jpg");
                  }
