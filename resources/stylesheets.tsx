@@ -96,8 +96,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonText: {
-    alignSelf: "center",
-    justifyContent: "center",
     textAlign: "center",
     fontWeight: "bold",
     color: "red",

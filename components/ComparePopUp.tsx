@@ -10,17 +10,21 @@ import {
 } from "react-native";
 
 class ComparePopUpProps {
-  playerStats: any;
+  playerStats1: any;
+  playerStats2: any;
   modalVisible: any;
   setModalVisible: any;
-  playerImg: any;
+  playerImg1: any;
+  playerImg2: any;
 }
 
 const ComparePopUp: React.FC<ComparePopUpProps> = ({
-  playerStats,
+  playerStats1,
+  playerStats2,
   modalVisible,
   setModalVisible,
-  playerImg,
+  playerImg1,
+  playerImg2,
 }) => {
   return (
     <Modal
@@ -34,18 +38,22 @@ const ComparePopUp: React.FC<ComparePopUpProps> = ({
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Image source={{ uri: playerImg }} style={styles.image} />
-          <Text style={styles.modalText}>{playerStats}</Text>
-          <Pressable
-            style={[styles.button, styles.buttonClose]}
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <Text style={styles.textStyle}>Hide Modal</Text>
-          </Pressable>
+          <Image source={{ uri: playerImg1 }} style={styles.image} />
+          <Text style={styles.modalText}>{playerStats1}</Text>
+        </View>
+        <View style={styles.modalView}>
+          <Image source={{ uri: playerImg2 }} style={styles.image} />
+          <Text style={styles.modalText}>{playerStats2}</Text>
         </View>
       </View>
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <Text style={styles.textStyle}>Hide Modal</Text>
+      </Pressable>
     </Modal>
   );
 };
@@ -62,11 +70,13 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
   },
   modalView: {
+    flexDirection: "column",
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
@@ -84,9 +94,9 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 10,
+    justifyContent: "center",
     elevation: 2,
-  },
-  buttonClose: {
+    width: "30%",
     backgroundColor: "#2196F3",
   },
   textStyle: {
