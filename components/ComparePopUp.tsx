@@ -9,14 +9,14 @@ import {
   View,
 } from "react-native";
 
-class SearchPopupProps {
+class ComparePopUpProps {
   playerStats: any;
   modalVisible: any;
   setModalVisible: any;
   playerImg: any;
 }
 
-const SearchPopUp: React.FC<SearchPopupProps> = ({
+const ComparePopUp: React.FC<ComparePopUpProps> = ({
   playerStats,
   modalVisible,
   setModalVisible,
@@ -50,7 +50,7 @@ const SearchPopUp: React.FC<SearchPopupProps> = ({
   );
 };
 
-export default SearchPopUp;
+export default ComparePopUp;
 
 const styles = StyleSheet.create({
   image: {

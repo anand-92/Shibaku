@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import SearchPopUp from "../components/SearchPopUp";
 import { stockPic } from "../resources/pictures";
 
-export default function MainApp() {
+export default function ComparePlayers() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [statInfo, setStatInfo] = useState<any>("Loading...");
   const [playerPic, setPlayerPic] = useState<any>(stockPic);
@@ -74,6 +74,18 @@ export default function MainApp() {
         <br />
         Iconic players like "LeBron" can be found with their unique name.
       </Text>
+      <Text style={styles.instructions}>
+        Enter the first player's first & last name to search.
+      </Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder={text}
+        onSubmitEditing={() => onSearch(text)}
+      />
+      <Text style={styles.instructions}>
+        Enter the second player's first & last name to search.
+      </Text>
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
@@ -86,7 +98,6 @@ export default function MainApp() {
         setModalVisible={setSearchVisible}
         playerImg={playerPic}
       />
-      <PlayerInfoScreen />
     </View>
   );
 }
