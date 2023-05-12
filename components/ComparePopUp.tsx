@@ -45,15 +45,15 @@ const ComparePopUp: React.FC<ComparePopUpProps> = ({
           <Image source={{ uri: playerImg2 }} style={styles.image} />
           <Text style={styles.modalText}>{playerStats2}</Text>
         </View>
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <Text style={styles.textStyle}>Hide Modal</Text>
+        </Pressable>
       </View>
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <Text style={styles.textStyle}>Hide Modal</Text>
-      </Pressable>
     </Modal>
   );
 };
@@ -69,18 +69,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   centeredView: {
+    backgroundColor: "black",
     flex: 1,
+    flexWrap: "wrap",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
   },
   modalView: {
+    flexBasis: "31%",
     flexDirection: "column",
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 15,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -92,11 +95,13 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
+    marginBottom: "25%",
     borderRadius: 20,
     padding: 10,
     justifyContent: "center",
     elevation: 2,
-    width: "30%",
+    width: "40%",
+    height: "8%",
     backgroundColor: "#2196F3",
   },
   textStyle: {
@@ -105,7 +110,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalText: {
-    marginBottom: 15,
+    fontSize: 24,
+    marginBottom: 5,
     textAlign: "center",
   },
 });

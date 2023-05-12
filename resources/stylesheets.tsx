@@ -2,6 +2,14 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   instructions: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
+    marginBottom: 15,
+    textAlign: "center",
+    paddingBottom: 20,
+  },
+  instructionsSearch: {
     fontWeight: "bold",
     color: "white",
     marginBottom: 15,

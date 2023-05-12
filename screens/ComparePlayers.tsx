@@ -1,9 +1,7 @@
 import { View } from "../components/Themed";
-import PlayerInfoScreen from "../components/PlayerInfo";
 import { styles } from "../resources/stylesheets";
-import { Button, Image, Pressable, Text, TextInput } from "react-native";
+import { Image, Pressable, Text, TextInput } from "react-native";
 import React, { useState } from "react";
-import SearchPopUp from "../components/SearchPopUp";
 import { stockPic } from "../resources/pictures";
 import ComparePopUp from "../components/ComparePopUp";
 
@@ -107,11 +105,13 @@ export default function ComparePlayers() {
     <View style={styles.container}>
       <Image></Image>
       <Text style={styles.instructions}>
-        Enter a player's first & last name to search.
+        Enter 2 player's first & last names to search and compare.
         <br />
-        Iconic players like "LeBron" can be found with their unique name.
+        <br />
+        Hint: Players with unique names like "LeBron" can be found with just
+        their first or last unique name.
       </Text>
-      <Text style={styles.instructions}>
+      <Text style={styles.instructionsSearch}>
         Enter the first player's first & last name to search.
       </Text>
       <TextInput
@@ -119,7 +119,7 @@ export default function ComparePlayers() {
         onChangeText={onChangeText1}
         placeholder={player1}
       />
-      <Text style={styles.instructions}>
+      <Text style={styles.instructionsSearch}>
         Enter the second player's first & last name to search.
       </Text>
       <TextInput

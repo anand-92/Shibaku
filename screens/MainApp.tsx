@@ -72,7 +72,9 @@ export default function MainApp() {
       <Text style={styles.instructions}>
         Enter a player's first & last name to search.
         <br />
-        Iconic players like "LeBron" can be found with their unique name.
+        <br />
+        Hint: Players with unique names like "LeBron" can be found with just
+        their first or last unique name.
       </Text>
       <TextInput
         style={styles.input}
