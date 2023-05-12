@@ -128,7 +128,7 @@ export default function ComparePlayers() {
         placeholder={player2}
       />
       <Pressable
-        style={styles.startButton}
+        style={styles.button}
         onPress={() => onSearch(player1, player2)}
       >
         <Text style={styles.buttonText}>Submit</Text>
