@@ -80,6 +80,14 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
   },
+  darkTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    alignSelf: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    color: "black",
+  },
   separator: {
     marginVertical: 30,
     height: 1,
