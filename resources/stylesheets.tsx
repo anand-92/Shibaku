@@ -184,6 +184,7 @@ export const styles = StyleSheet.create({
     height: 20,
     marginBottom: 50,
     textAlign: "center",
+    color: "white",
   },
   darkModalView: {
     margin: 20,
