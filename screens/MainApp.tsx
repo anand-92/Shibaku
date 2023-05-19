@@ -9,6 +9,7 @@ import { useIsFocused } from "@react-navigation/native";
 
 export default function MainApp() {
   const isFocused = useIsFocused();
+  let storedMode;
   const [variableContainerStyle, setVariableContainerStyle] = useState(
     styles.container
   );
@@ -79,7 +80,7 @@ export default function MainApp() {
   }
 
   function startUp() {
-    const storedMode = localStorage.getItem("mode");
+    storedMode = localStorage.getItem("mode");
     if (storedMode === "Dark Mode") {
       setVariableContainerStyle(styles.darkContainer);
       setVariableInstructionsStyle(styles.darkInstructions);
@@ -111,6 +112,7 @@ export default function MainApp() {
       <TextInput
         style={variableInputStyle}
         onChangeText={onChangeText}
+        //TODO fix color of inputed text when in dark mode
         placeholder={text}
         placeholderTextColor={variablePlaceholderColor}
         onSubmitEditing={() => onSearch(text)}
@@ -120,6 +122,7 @@ export default function MainApp() {
         modalVisible={searchVisible}
         setModalVisible={setSearchVisible}
         playerImg={playerPic}
+        mode={storedMode}
       />
       <PlayerInfoScreen />
     </View>

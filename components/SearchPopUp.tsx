@@ -14,6 +14,7 @@ class SearchPopupProps {
   modalVisible: any;
   setModalVisible: any;
   playerImg: any;
+  mode: any;
 }
 
 const SearchPopUp: React.FC<SearchPopupProps> = ({
@@ -21,7 +22,16 @@ const SearchPopUp: React.FC<SearchPopupProps> = ({
   modalVisible,
   setModalVisible,
   playerImg,
+  mode,
 }) => {
+  let popUpModalView = styles.modalView;
+  let popUpTextStyle = styles.textStyle;
+  let popUpModalText = styles.modalText;
+  if (mode === "Dark View") {
+    popUpModalView = styles.modalDarkView;
+    popUpModalText = styles.modalDarkText;
+    popUpTextStyle = styles.textDarkStyle;
+  }
   return (
     <Modal
       animationType="slide"
@@ -33,16 +43,16 @@ const SearchPopUp: React.FC<SearchPopupProps> = ({
       }}
     >
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+        <View style={popUpModalView}>
           <Image source={{ uri: playerImg }} style={styles.image} />
-          <Text style={styles.modalText}>{playerStats}</Text>
+          <Text style={popUpModalText}>{playerStats}</Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
             onPress={() => {
               setModalVisible(!modalVisible);
             }}
           >
-            <Text style={styles.textStyle}>Hide Modal</Text>
+            <Text style={popUpTextStyle}>Hide Modal</Text>
           </Pressable>
         </View>
       </View>
@@ -81,6 +91,21 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  modalDarkView: {
+    margin: 20,
+    backgroundColor: "black",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
   button: {
     borderRadius: 20,
     padding: 10,
@@ -94,8 +119,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  textDarkStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+    color: "black",
+  },
+  modalDarkText: {
+    marginBottom: 15,
+    textAlign: "center",
+    color: "white",
   },
 });
