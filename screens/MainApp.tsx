@@ -1,12 +1,24 @@
 import { View } from "../components/Themed";
 import PlayerInfoScreen from "../components/PlayerInfo";
 import { styles } from "../resources/stylesheets";
-import { Image, Text, TextInput } from "react-native";
+import { Text, TextInput } from "react-native";
 import React, { useState } from "react";
 import SearchPopUp from "../components/SearchPopUp";
 import { stockPic } from "../resources/pictures";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function MainApp() {
+  const isFocused = useIsFocused();
+  const [variableContainerStyle, setVariableContainerStyle] = useState(
+    styles.container
+  );
+  const [variableInstructionsStyle, setVariableInstructionsStyle] = useState(
+    styles.instructions
+  );
+  const [variableInputStyle, setVariableInputStyle] = useState(styles.input);
+  const [variablePlaceholderColor, setVariablePlaceholderColor] =
+    useState("black");
+
   const [searchVisible, setSearchVisible] = useState(false);
   const [statInfo, setStatInfo] = useState<any>("Loading...");
   const [playerPic, setPlayerPic] = useState<any>(stockPic);
@@ -66,10 +78,30 @@ export default function MainApp() {
     });
   }
 
+  function startUp() {
+    const storedMode = localStorage.getItem("mode");
+    if (storedMode === "Dark Mode") {
+      setVariableContainerStyle(styles.darkContainer);
+      setVariableInstructionsStyle(styles.darkInstructions);
+      setVariableInputStyle(styles.darkInput);
+      setVariablePlaceholderColor("white");
+    } else {
+      setVariableContainerStyle(styles.container);
+      setVariableInstructionsStyle(styles.instructions);
+      setVariableInputStyle(styles.input);
+      setVariablePlaceholderColor("black");
+    }
+  }
+
+  React.useEffect(() => {
+    if (isFocused) {
+      startUp();
+    }
+  }, [isFocused]);
+
   return (
-    <View style={styles.container}>
-      <Image></Image>
-      <Text style={styles.instructions}>
+    <View style={variableContainerStyle}>
+      <Text style={variableInstructionsStyle}>
         Enter a player's first & last name to search.
         <br />
         <br />
@@ -77,9 +109,10 @@ export default function MainApp() {
         their first or last unique name.
       </Text>
       <TextInput
-        style={styles.input}
+        style={variableInputStyle}
         onChangeText={onChangeText}
         placeholder={text}
+        placeholderTextColor={variablePlaceholderColor}
         onSubmitEditing={() => onSearch(text)}
       />
       <SearchPopUp

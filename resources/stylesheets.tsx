@@ -73,6 +73,12 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  darkContainer: {
+    backgroundColor: "black",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",

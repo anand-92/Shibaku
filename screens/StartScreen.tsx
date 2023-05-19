@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function StartScreen({
   navigation,
 }: RootTabScreenProps<"StartScreen">) {
-  const storedMode = localStorage.getItem("mode");
+  let storedMode = localStorage.getItem("mode");
   const [mode, setMode] = useState(storedMode);
 
   const [variableButtonStyle, setVariableButtonStyle] = useState(styles.button);
@@ -16,13 +16,6 @@ export default function StartScreen({
   );
   const [variableTitleStyle, setVariableTitleStyle] = useState(styles.title);
 
-  function startUp() {
-    if (mode === "Dark Mode") {
-      setVariableButtonStyle(styles.darkButton);
-      setVariableButtonTextStyle(styles.darkButtonText);
-      setVariableTitleStyle(styles.darkTitle);
-    }
-  }
   function changeMode() {
     //change button text
     if (mode === "Dark Mode") {
@@ -38,17 +31,14 @@ export default function StartScreen({
       setVariableButtonTextStyle(styles.darkButtonText);
       setVariableTitleStyle(styles.darkTitle);
     }
-
-    //set mode
   }
 
   useEffect(() => {
-    console.log(`Is in dark mode? ${mode}`);
-    //changeMode();
-  }, [mode]);
-
-  useEffect(() => {
-    startUp();
+    if (mode === "Dark Mode") {
+      setVariableButtonStyle(styles.darkButton);
+      setVariableButtonTextStyle(styles.darkButtonText);
+      setVariableTitleStyle(styles.darkTitle);
+    }
   }, []);
 
   return (
