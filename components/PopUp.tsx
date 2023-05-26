@@ -5,13 +5,24 @@ class PopupProps {
   playerStats: any;
   modalVisible: any;
   setModalVisible: any;
+  mode: any;
 }
 
 const PopUp: React.FC<PopupProps> = ({
   playerStats,
   modalVisible,
   setModalVisible,
+  mode,
 }) => {
+  let popUpModalView;
+  let popUpModalText;
+  if (mode === "Dark Mode") {
+    popUpModalView = styles.modalDarkView;
+    popUpModalText = styles.modalDarkText;
+  } else {
+    popUpModalView = styles.modalView;
+    popUpModalText = styles.modalText;
+  }
   return (
     <Modal
       animationType="slide"
@@ -23,8 +34,8 @@ const PopUp: React.FC<PopupProps> = ({
       }}
     >
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          <Text style={styles.modalText}>{playerStats}</Text>
+        <View style={popUpModalView}>
+          <Text style={popUpModalText}>{playerStats}</Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
             onPress={() => {
@@ -63,6 +74,21 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  modalDarkView: {
+    margin: 20,
+    backgroundColor: "black",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
   button: {
     borderRadius: 20,
     padding: 10,
@@ -79,5 +105,10 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+  modalDarkText: {
+    marginBottom: 15,
+    textAlign: "center",
+    color: "white",
   },
 });

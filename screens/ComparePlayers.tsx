@@ -4,8 +4,27 @@ import { Image, Pressable, Text, TextInput } from "react-native";
 import React, { useState } from "react";
 import { stockPic } from "../resources/pictures";
 import ComparePopUp from "../components/ComparePopUp";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function ComparePlayers() {
+  const isFocused = useIsFocused();
+  let storedMode;
+  const [variableContainerStyle, setVariableContainerStyle] = useState(
+    styles.container
+  );
+  const [variableInstructionsStyle, setVariableInstructionsStyle] = useState(
+    styles.instructions
+  );
+  const [variableInstructionsSearchStyle, setVariableInstructionsSearchStyle] =
+    useState(styles.instructionsSearch);
+  const [variableInputStyle, setVariableInputStyle] = useState(styles.input);
+  const [variableButtonStyle, setVariableButtonStyle] = useState(styles.button);
+  const [variableButtonTextStyle, setVariableButtonTextStyle] = useState(
+    styles.buttonText
+  );
+  const [variablePlaceholderColor, setVariablePlaceholderColor] =
+    useState("black");
+
   const [searchVisible, setSearchVisible] = useState(false);
   const [statInfo1, setStatInfo1] = useState<any>("Loading...");
   const [statInfo2, setStatInfo2] = useState<any>("Loading...");
@@ -101,37 +120,66 @@ export default function ComparePlayers() {
     });
   }
 
+  function startUp() {
+    storedMode = localStorage.getItem("mode");
+    if (storedMode === "Dark Mode") {
+      setVariableContainerStyle(styles.darkContainer);
+      setVariableInstructionsStyle(styles.darkInstructions);
+      setVariableInstructionsSearchStyle(styles.darkInstructionsSearch);
+      setVariableButtonStyle(styles.darkButton);
+      setVariableButtonTextStyle(styles.darkButtonText);
+      setVariableInputStyle(styles.darkInput);
+      setVariablePlaceholderColor("white");
+    } else {
+      setVariableContainerStyle(styles.container);
+      setVariableInstructionsStyle(styles.instructions);
+      setVariableInstructionsSearchStyle(styles.instructionsSearch);
+      setVariableButtonStyle(styles.button);
+      setVariableButtonTextStyle(styles.buttonText);
+      setVariableInputStyle(styles.input);
+      setVariablePlaceholderColor("black");
+    }
+  }
+
+  React.useEffect(() => {
+    if (isFocused) {
+      startUp();
+    }
+  }, [isFocused]);
+
   return (
-    <View style={styles.container}>
+    <View style={variableContainerStyle}>
       <Image></Image>
-      <Text style={styles.instructions}>
+      <Text style={variableInstructionsStyle}>
         Enter 2 player's first & last names to search and compare.
         <br />
         <br />
         Hint: Players with unique names like "LeBron" can be found with just
         their first or last unique name.
       </Text>
-      <Text style={styles.instructionsSearch}>
+      <Text style={variableInstructionsSearchStyle}>
         Enter the first player's first & last name to search.
       </Text>
       <TextInput
-        style={styles.input}
+        style={variableInputStyle}
         onChangeText={onChangeText1}
         placeholder={player1}
+        placeholderTextColor={variablePlaceholderColor}
       />
-      <Text style={styles.instructionsSearch}>
+      <Text style={variableInstructionsSearchStyle}>
         Enter the second player's first & last name to search.
       </Text>
       <TextInput
-        style={styles.input}
+        style={variableInputStyle}
         onChangeText={onChangeText2}
         placeholder={player2}
+        placeholderTextColor={variablePlaceholderColor}
       />
       <Pressable
-        style={styles.button}
+        style={variableButtonStyle}
         onPress={() => onSearch(player1, player2)}
       >
-        <Text style={styles.buttonText}>Submit</Text>
+        <Text style={variableButtonTextStyle}>Submit</Text>
       </Pressable>
       <ComparePopUp
         playerStats1={statInfo1}
@@ -140,6 +188,7 @@ export default function ComparePlayers() {
         setModalVisible={setSearchVisible}
         playerImg1={playerPic1}
         playerImg2={playerPic2}
+        mode={localStorage.getItem("mode")}
       />
     </View>
   );

@@ -24,13 +24,14 @@ const SearchPopUp: React.FC<SearchPopupProps> = ({
   playerImg,
   mode,
 }) => {
-  let popUpModalView = styles.modalView;
-  let popUpTextStyle = styles.textStyle;
-  let popUpModalText = styles.modalText;
-  if (mode === "Dark View") {
+  let popUpModalView;
+  let popUpModalText;
+  if (mode === "Dark Mode") {
     popUpModalView = styles.modalDarkView;
     popUpModalText = styles.modalDarkText;
-    popUpTextStyle = styles.textDarkStyle;
+  } else {
+    popUpModalView = styles.modalView;
+    popUpModalText = styles.modalText;
   }
   return (
     <Modal
@@ -52,7 +53,7 @@ const SearchPopUp: React.FC<SearchPopupProps> = ({
               setModalVisible(!modalVisible);
             }}
           >
-            <Text style={popUpTextStyle}>Hide Modal</Text>
+            <Text style={styles.textStyle}>Hide Modal</Text>
           </Pressable>
         </View>
       </View>
@@ -115,11 +116,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#2196F3",
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  textDarkStyle: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center",

@@ -154,26 +154,31 @@ const PlayerInfoScreen = () => {
         playerStats={printLebron()}
         modalVisible={lebronVisible}
         setModalVisible={setLebronVisible}
+        mode={localStorage.getItem("mode")}
       />
       <PopUp
         playerStats={printKd()}
         modalVisible={durantVisible}
         setModalVisible={setDurantVisible}
+        mode={localStorage.getItem("mode")}
       />
       <PopUp
         playerStats={printHarden()}
         modalVisible={hardenVisible}
         setModalVisible={setHardenVisible}
+        mode={localStorage.getItem("mode")}
       />
       <PopUp
         playerStats={printWestbrook()}
         modalVisible={westbrookVisible}
         setModalVisible={setWestbrookVisible}
+        mode={localStorage.getItem("mode")}
       />
       <PopUp
         playerStats={printLillard()}
         modalVisible={lillardVisible}
         setModalVisible={setLillardVisible}
+        mode={localStorage.getItem("mode")}
       />
     </View>
   );

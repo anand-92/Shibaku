@@ -112,7 +112,6 @@ export default function MainApp() {
       <TextInput
         style={variableInputStyle}
         onChangeText={onChangeText}
-        //TODO fix color of inputed text when in dark mode
         placeholder={text}
         placeholderTextColor={variablePlaceholderColor}
         onSubmitEditing={() => onSearch(text)}
@@ -122,7 +121,7 @@ export default function MainApp() {
         modalVisible={searchVisible}
         setModalVisible={setSearchVisible}
         playerImg={playerPic}
-        mode={storedMode}
+        mode={localStorage.getItem("mode")}
       />
       <PlayerInfoScreen />
     </View>

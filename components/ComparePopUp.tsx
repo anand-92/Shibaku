@@ -16,6 +16,7 @@ class ComparePopUpProps {
   setModalVisible: any;
   playerImg1: any;
   playerImg2: any;
+  mode: any;
 }
 
 const ComparePopUp: React.FC<ComparePopUpProps> = ({
@@ -25,7 +26,17 @@ const ComparePopUp: React.FC<ComparePopUpProps> = ({
   setModalVisible,
   playerImg1,
   playerImg2,
+  mode,
 }) => {
+  let popUpModalView;
+  let popUpModalText;
+  if (mode === "Dark Mode") {
+    popUpModalView = styles.modalDarkView;
+    popUpModalText = styles.modalDarkText;
+  } else {
+    popUpModalView = styles.modalView;
+    popUpModalText = styles.modalText;
+  }
   return (
     <Modal
       animationType="slide"
@@ -37,13 +48,13 @@ const ComparePopUp: React.FC<ComparePopUpProps> = ({
       }}
     >
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+        <View style={popUpModalView}>
           <Image source={{ uri: playerImg1 }} style={styles.image} />
-          <Text style={styles.modalText}>{playerStats1}</Text>
+          <Text style={popUpModalText}>{playerStats1}</Text>
         </View>
-        <View style={styles.modalView}>
+        <View style={popUpModalView}>
           <Image source={{ uri: playerImg2 }} style={styles.image} />
-          <Text style={styles.modalText}>{playerStats2}</Text>
+          <Text style={popUpModalText}>{playerStats2}</Text>
         </View>
         <Pressable
           style={styles.button}
@@ -94,6 +105,23 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  modalDarkView: {
+    flexBasis: "31%",
+    flexDirection: "column",
+    margin: 20,
+    backgroundColor: "black",
+    borderRadius: 20,
+    padding: 15,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
   button: {
     marginBottom: "25%",
     borderRadius: 20,
@@ -113,5 +141,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 5,
     textAlign: "center",
+  },
+  modalDarkText: {
+    fontSize: 24,
+    marginBottom: 5,
+    textAlign: "center",
+    color: "white",
   },
 });
