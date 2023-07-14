@@ -15,12 +15,12 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          StartScreen: {
+          Shibaku: {
             screens: {
               TabOneScreen: "one",
             },
           },
-          NBAStats: {
+          Chart: {
             screens: {
               TabTwoScreen: "two",
             },

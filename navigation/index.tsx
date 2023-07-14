@@ -18,7 +18,7 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import StartScreen from "../screens/StartScreen";
+import Shibaku from "../screens/Shibaku";
 import MainApp from "../screens/MainApp";
 import {
   RootStackParamList,
@@ -80,16 +80,16 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="StartScreen"
+      initialRouteName="Shibaku"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="StartScreen"
-        component={StartScreen}
-        options={({ navigation }: RootTabScreenProps<"StartScreen">) => ({
-          title: "Start Screen",
+        name="Shibaku"
+        component={Shibaku}
+        options={({ navigation }: RootTabScreenProps<"Shibaku">) => ({
+          title: "Shibaku",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
@@ -109,10 +109,10 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="NBAStats"
+        name="Chart"
         component={MainApp}
         options={{
-          title: "NBA Stats",
+          title: "Chart",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

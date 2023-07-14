@@ -9,6 +9,15 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     paddingBottom: 20,
   },
+  demo: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  text: {
+    fontSize: 30,
+  },
   instructionsSearch: {
     fontWeight: "bold",
     color: "black",
@@ -67,6 +76,18 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
+  logo: {
+    height: 50,
+    width: 50,
+    position: "absolute",
+    bottom: 5,
+    //marginTop: 50,
+  },
+  logoLinks: {
+    height: 50,
+    width: 50,
+    padding: 10,
+  },
   container: {
     backgroundColor: "white",
     flex: 1,
@@ -80,14 +101,14 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 20,
+    fontSize: 50,
     fontWeight: "bold",
     alignSelf: "center",
     justifyContent: "center",
     textAlign: "center",
   },
   darkTitle: {
-    fontSize: 20,
+    fontSize: 50,
     fontWeight: "bold",
     alignSelf: "center",
     justifyContent: "center",

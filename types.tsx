@@ -26,8 +26,8 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
 
 export type RootTabParamList = {
-  StartScreen: undefined;
-  NBAStats: undefined;
+  Shibaku: undefined;
+  Chart: undefined;
   ComparePlayers: undefined;
 };
 
