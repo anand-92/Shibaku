@@ -94,10 +94,6 @@ export default function Shibaku(
         >
           <Text style={variableButtonTextStyle}>White Paper</Text>
         </Pressable>
-        //dark mode shit
-        {/*<Pressable style={variableButtonStyle} onPress={changeMode}>*/}
-        {/*  <Text style={variableButtonTextStyle}>{mode}</Text>*/}
-        {/*</Pressable>*/}
         <div
           style={{
             display: "flex",

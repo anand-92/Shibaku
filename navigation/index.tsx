@@ -26,7 +26,7 @@ import {
   RootTabScreenProps,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
-import ComparePlayers from "../screens/ComparePlayers";
+import Tokenomics from "../screens/Tokenomics";
 
 export default function Navigation({
   colorScheme,
@@ -117,10 +117,10 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="ComparePlayers"
-        component={ComparePlayers}
+        name="Tokenomics"
+        component={Tokenomics}
         options={{
-          title: "Compare Players",
+          title: "Tokenomics",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

@@ -25,7 +25,7 @@ const linking: LinkingOptions<RootStackParamList> = {
               TabTwoScreen: "two",
             },
           },
-          ComparePlayers: {
+          Tokenomics: {
             screens: {
               TabThreeScreen: "three",
             },
