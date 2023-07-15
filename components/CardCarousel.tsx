@@ -13,10 +13,6 @@ interface CardCarouselProps {
 const CardCarousel: React.FC<CardCarouselProps> = ({ cards }) => {
     const [currentCard, setCurrentCard] = useState(0);
 
-    const handlePrevCard = () => {
-        setCurrentCard((prevCard) => (prevCard === 0 ? cards.length - 1 : prevCard - 1));
-    };
-
     const handleNextCard = () => {
         setCurrentCard((prevCard) => (prevCard === cards.length - 1 ? 0 : prevCard + 1));
     };
@@ -60,7 +56,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   color: #777;
-  font-size: 120%;
+  font-size: 105%;
   line-height: 1.5;
 `;
 
