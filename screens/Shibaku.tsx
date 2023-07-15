@@ -80,17 +80,12 @@ export default function Shibaku(
         </div>
         <Pressable
           style={variableButtonStyle}
-          onPress={() => Linking.openURL("https://pancakeswap.finance/swap")}
+          onPress={() => Linking.openURL("https://app.uniswap.org/#/swap")}
         >
           <Text style={variableButtonTextStyle}>Buy Now</Text>
         </Pressable>
-        <Pressable
-          style={variableButtonStyle}
-          onPress={() => null} //open PDF? or just host on site? interactive whitepaper maybe?
-        >
-          <Text style={variableButtonTextStyle}>White Paper</Text>
-        </Pressable>
         <Text style={styles.contract}>CONTRACTADDRESS</Text>
+        <Text style={styles.contract}>1% Tax</Text>
         <div
           style={{
             display: "flex",

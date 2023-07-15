@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import {Feather, FontAwesome} from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   NavigationContainer,
@@ -89,6 +89,9 @@ function BottomTabNavigator() {
         name="Shibaku"
         component={Shibaku}
         options={({ navigation }: RootTabScreenProps<"Shibaku">) => ({
+            tabBarIcon: ({ color, size }) => (
+                <Feather name="home" color={color} size={size} />
+            ),
             headerTitleAlign: 'center',
           title: "Shibaku",
           headerRight: () => (
@@ -106,6 +109,9 @@ function BottomTabNavigator() {
         name="Chart"
         component={MainApp}
         options={{
+            tabBarIcon: ({ color, size }) => (
+                <Feather name="bar-chart-2" color={color} size={size} />
+            ),
             headerTitleAlign: 'center',
           title: "Chart",
         }}
@@ -114,6 +120,9 @@ function BottomTabNavigator() {
         name="Tokenomics"
         component={Tokenomics}
         options={{
+            tabBarIcon: ({ color, size }) => (
+                <Feather name="dollar-sign" color={color} size={size} />
+            ),
             headerTitleAlign: 'center',
           title: "Tokenomics",
         }}
