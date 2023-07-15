@@ -60,7 +60,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   color: #777;
-  font-size: 150%;
+  font-size: 120%;
   line-height: 1.5;
 `;
 
@@ -69,7 +69,7 @@ const ArrowButton = styled.button`
   border: none;
   color: #888;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 180%;
   outline: none;
   transition: color 0.3s ease;
 

@@ -74,7 +74,7 @@ export default function Shibaku(
             iteration="infinite"
             fillMode="none"
           >
-            <Text style={variableTitleStyle}>Shibaku Inu </Text>
+            <Text style={variableTitleStyle}>Shibaku </Text>
             <img src={shib} style={styles.logo}></img>
           </MovingText>
         </div>
