@@ -80,11 +80,11 @@ export default function Shibaku(
         </div>
         <Pressable
           style={variableButtonStyle}
-          onPress={() => Linking.openURL("https://app.uniswap.org/#/swap")}
+          onPress={() => Linking.openURL("https://app.uniswap.org/#/swap?outputCurrency=0x04Ec425e0773A06e504b81924ae349D758edEbd1")}
         >
           <Text style={variableButtonTextStyle}>Buy Now</Text>
         </Pressable>
-        <Text style={styles.contract}>CONTRACTADDRESS</Text>
+        <Text style={styles.contract}>0x04Ec425e0773A06e504b81924ae349D758edEbd1</Text>
         <Text style={styles.contract}>1% Tax</Text>
         <div
           style={{
@@ -100,16 +100,16 @@ export default function Shibaku(
           <a href="https://t.me/+cyGohcPftyBjZTUx">
             <img src={telegram} style={styles.logoLinks}></img>
           </a>
-          <a href="https://etherscan.io/">
+          <a href="https://etherscan.io/address/0x04Ec425e0773A06e504b81924ae349D758edEbd1">
             <img src={scan} style={styles.logoLinks}></img>
           </a>
-          <a href="https://www.dextools.io/app/en/ether/pair-explorer/0x04f01db076c85ea9a27c84c83e13b166fe9db95c">
+          <a href="https://www.dextools.io/app/en/ether/pair-explorer/0x04Ec425e0773A06e504b81924ae349D758edEbd1">
             <img src={dex} style={styles.logoLinks}></img>
           </a>
-          <a href="https://app.uniswap.org/#/swap">
+          <a href="https://app.uniswap.org/#/swap?outputCurrency=0x04Ec425e0773A06e504b81924ae349D758edEbd1">
             <img src={uni} style={styles.logoLinks}></img>
           </a>
-          <a href="https://twitter.com">
+          <a href="https://twitter.com/ShibakuETH">
             <img src={twitter} style={styles.logoLinks}></img>
           </a>
         </div>
