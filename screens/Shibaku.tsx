@@ -56,7 +56,7 @@ export default function Shibaku(
       <ImageBackground
         style={styles.homeImage}
         source={logo}
-        resizeMode="center"
+        resizeMode="repeat"
       >
         <div
           style={{
