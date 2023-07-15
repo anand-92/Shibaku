@@ -48,7 +48,7 @@ const CardContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 20px;
   width: 80%;
-  height: 50%;
+  height: 80%;
   text-align: center;
 `;
 
