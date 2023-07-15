@@ -39,6 +39,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 50%;
 `;
 
 const CardContainer = styled.div`
@@ -46,20 +47,20 @@ const CardContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  max-width: 400px;
-  width: 100%;
+  width: 80%;
+  height: 50%;
   text-align: center;
 `;
 
 const Title = styled.h3`
   margin-top: 0;
-  font-size: 24px;
+  font-size: 180%;
   color: #555;
 `;
 
 const Description = styled.p`
   color: #777;
-  font-size: 16px;
+  font-size: 150%;
   line-height: 1.5;
 `;
 
