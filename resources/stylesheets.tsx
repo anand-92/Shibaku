@@ -168,7 +168,7 @@ export const styles = StyleSheet.create({
     color: "white",
   },
   homeImage: {
-    position: "absolute",
+    position: "relative",
     justifyContent: "center",
     flex: 1,
     height: "100%",
