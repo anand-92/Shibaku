@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import MovingText from "react-moving-text";
 
 const shib = require("../assets/images/shib.png");
-const logo = require("../assets/images/logo.jpeg");
+const logo = require("../assets/images/baku.jpg");
 const telegram = require("../assets/images/telegram-icon-512x512-z8lb0qsx.png");
 const dex = require("../assets/images/dex.png");
 const scan = require("../assets/images/scan-w.png");

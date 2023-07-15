@@ -8,48 +8,39 @@ export default function Tokenomics() {
     {
       title: "Introduction",
       description:
-        "Welcome to the extraordinary realm of CelestialGold, a groundbreaking token designed to ignite your passion for" +
-          " limitless possibilities. Brace yourself as we embark on an interstellar journey where astronomical gains await the intrepid explorers of the crypto universe.",
+        "Shibaku ($BAKU) is a revolutionary token built off Ethereum that embodies the spirit of a" +
+          " bad ass Shiba Inu with an attitude. With a 1% tax on each transaction, $BAKU aims to support various marketing initiatives " +
+          "within the community. This white paper outlines " +
+          "the key features, goals, and vision of Shibaku, as well as the roadmap for its future development.",
     },
     {
       title: "Supply",
       description:
-        "🚀 Elevate Your Wealth: With a total supply of 69,420,000 CelestialGold tokens, our mission is to unlock the" +
-          " true power of cosmic abundance. Imagine the exponential growth potential that lies within this carefully crafted treasure trove of digital assets.",
+        "🚀Total Supply: 69,420,000 $BAKU\n" +
+          "\n" +
+          "🚀1% Tax \n" +
+          "Community Initiatives: 1% of each transaction is allocated to community initiatives, including marketing, " +
+          "partnerships, and charitable buybacks. This ensures the growth and expansion of Shibaku's presence within the crypto space and beyond.",
     },
     {
       title: "Tax",
       description:
-        "🌌 Cosmic Marketing: We believe in the power of marketing to propel projects to new heights. That's why we implement" +
-          " a visionary approach, leveraging a 1% marketing tax to fuel our relentless promotional campaigns. " +
-          "Expect to witness an unparalleled buzz as CelestialGold lights up the crypto-sphere with its captivating allure.",
+        "🌌 Transparency and Security: Shibaku operates on the Ethereum Chain, benefiting from its robust security " +
+          "and decentralized infrastructure. Smart contract audits will be conducted to ensure the integrity of the token " +
+          "and provide confidence to our community.",
     },
     {
       title: "Liquidity Lock",
       description:
         "🔐 Secured LP Tokens: Safeguarding your investment is paramount to us. We've taken strategic measures to lock" +
-          " our liquidity pool (LP) tokens in unicrypt, ensuring stability and providing you with peace of mind. Rest assured " +
-          "that your journey through the cosmos will be protected by advanced security protocols.",
-    },
-    {
-      title: "Ascend",
-      description:
-        "✨ Ascend to New Heights: CelestialGold offers an opportunity like no other. It's a chance to witness your wealth" +
-          " soar to uncharted celestial realms, where financial freedom awaits those daring enough to seize it. " +
-          "Embark on this celestial odyssey and experience the thrill of unprecedented growth.",
-    },
-    {
-      title: "Discover",
-      description:
-        "💫 Discover the Unknown: Curiosity beckons, and our cosmic voyage is just the beginning. Explore the vast ecosystem" +
-          " surrounding CelestialGold, where a thriving community of like-minded enthusiasts congregates. " +
-          "Engage in discussions, share insights, and unveil the secrets of this celestial realm together.",
+          " our liquidity pool (LP) tokens in Unicrypt, ensuring stability and providing you with peace of mind. Rest assured " +
+          "that your journey with $BAKU will be protected by advanced security protocols.",
     },
     {
       title: "Join",
       description:
-        "🌟 Join the CelestialGold Movement: The cosmos has spoken, and it's time to answer the call. Prepare to be captivated" +
-          " by the magic of CelestialGold as it blazes a trail of excitement across the Binance Smart Chain. " +
+        "🌟 Join the $BAKU Movement: The Shib has barked, and it's time to answer the call. Prepare to be captivated" +
+          " by the magic of Shibaku as he blazes a trail of excitement across the Ethereum Network. " +
           "Learn more about our mission, tokenomics, and the boundless opportunities that await you in our Telegram channel.",
     },
   ];

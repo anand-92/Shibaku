@@ -89,7 +89,7 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   container: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
