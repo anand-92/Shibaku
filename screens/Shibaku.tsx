@@ -1,8 +1,4 @@
-import {
-  ImageBackground,
-  Linking,
-  Pressable,
-} from "react-native";
+import { ImageBackground, Linking, Pressable } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import { styles } from "../resources/stylesheets";

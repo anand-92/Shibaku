@@ -46,13 +46,16 @@
     "react-native-screens": "~3.18.0",
     "react-native-spinkit": "^1.5.1",
     "react-native-web": "~0.18.9",
-    "react-search-box": "^3.0.0"
+    "react-search-box": "^3.0.0",
+    "react-transition-group": "^4.4.5",
+    "styled-components": "^6.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@freakycoder/react-native-bounceable": ">= 0.2.2",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
+    "@types/react-transition-group": "^4.4.6",
     "eslint-config-prettier": "^8.8.0",
     "jest": "^26.6.3",
     "jest-expo": "~47.0.1",
