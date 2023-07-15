@@ -89,8 +89,8 @@ function BottomTabNavigator() {
         name="Shibaku"
         component={Shibaku}
         options={({ navigation }: RootTabScreenProps<"Shibaku">) => ({
+            headerTitleAlign: 'center',
           title: "Shibaku",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate("Modal")}
@@ -98,12 +98,6 @@ function BottomTabNavigator() {
                 opacity: pressed ? 0.5 : 1,
               })}
             >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
             </Pressable>
           ),
         })}
@@ -112,16 +106,16 @@ function BottomTabNavigator() {
         name="Chart"
         component={MainApp}
         options={{
+            headerTitleAlign: 'center',
           title: "Chart",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Tokenomics"
         component={Tokenomics}
         options={{
+            headerTitleAlign: 'center',
           title: "Tokenomics",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </BottomTab.Navigator>
