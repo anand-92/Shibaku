@@ -90,6 +90,7 @@ export default function Shibaku(
         >
           <Text style={variableButtonTextStyle}>White Paper</Text>
         </Pressable>
+        <Text style={styles.contract}>CONTRACTADDRESS</Text>
         <div
           style={{
             display: "flex",
@@ -104,7 +105,7 @@ export default function Shibaku(
           <a href="https://t.me/+cyGohcPftyBjZTUx">
             <img src={telegram} style={styles.logoLinks}></img>
           </a>
-          <a href="https://bscscan.com">
+          <a href="https://etherscan.io/">
             <img src={scan} style={styles.logoLinks}></img>
           </a>
           <a href="https://www.dextools.io/app/en/ether/pair-explorer/0x04f01db076c85ea9a27c84c83e13b166fe9db95c">

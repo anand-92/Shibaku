@@ -93,6 +93,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    height: "90%",
+    width: "100%"
   },
   darkContainer: {
     backgroundColor: "black",
@@ -158,6 +160,12 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     color: "black",
+  },
+  contract: {
+    paddingTop: 20,
+    textAlign: "center",
+    fontWeight: "bold",
+    color: "white",
   },
   homeImage: {
     position: "absolute",
