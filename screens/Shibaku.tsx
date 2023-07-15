@@ -97,7 +97,7 @@ export default function Shibaku(
             right: 0,
           }}
         >
-          <a href="https://t.me/+cyGohcPftyBjZTUx">
+          <a href="https://t.me/shibakueth">
             <img src={telegram} style={styles.logoLinks}></img>
           </a>
           <a href="https://etherscan.io/address/0x04Ec425e0773A06e504b81924ae349D758edEbd1">
