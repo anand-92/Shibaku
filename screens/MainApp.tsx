@@ -16,7 +16,7 @@ export default function MainApp() {
         title="DEXTools Trading Chart"
         width="90%"
         height="100%"
-        src="https://www.dextools.io/widget-chart/en/ether/pe-light0x04Ec425e0773A06e504b81924ae349D758edEbd1?theme=dark&chartType=2&chartResolution=30&drawingToolbars=false"
+        src="https://www.dextools.io/widget-chart/en/ether/pe-light/0x04Ec425e0773A06e504b81924ae349D758edEbd1?theme=dark&chartType=2&chartResolution=30&drawingToolbars=false"
       ></iframe>
     </View>
   );
